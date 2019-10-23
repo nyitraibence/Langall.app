@@ -1,0 +1,37 @@
+
+strip-unit($value) {
+	return unit($value, '')
+}
+
+fluid-type($min-font-size, $max-font-size) {
+	$su = strip-unit($max-font-size - $min-font-size)
+	font-size $min-font-size
+
+	// xl
+	@media (min-width: 1200px) {
+		font-size $max-font-size
+	}
+
+	// lg
+	@media (min-width: 992px) and (max-width: 1199px) {
+		font-size 'calc(%s + %s * ((100vw - %s) / %s))' % ($min-font-size $su 992px (1199 - 992))
+	}
+
+	// md
+	@media (min-width: 769px) and (max-width: 991px) {
+		font-size 'calc(%s + %s * ((100vw - %s) / %s))' % ($min-font-size $su 769px (991 - 769))
+	}
+
+	// sm
+	@media (min-width: 576px) and (max-width: 768px) {
+		font-size 'calc(%s + %s * ((100vw - %s) / %s))' % ($min-font-size $su 576px (768 - 567))
+	}
+}
+
+// DISPLAY FLEX MIXIN
+dflex($direction, $align, $justify) {
+	display flex
+	flex-direction $direction
+	align-items $align
+	justify-content $justify
+}

@@ -1,0 +1,116 @@
+/**
+ * Custom button styles
+ */
+colors = 'primary' $primary, 'secondary' $secondary
+
+.btn {
+	display inline-block
+	text-align center
+	white-space nowrap
+	vertical-align middle
+	user-select none
+	border 1px solid transparent
+	padding .375rem .75rem
+	font-size 1rem
+	line-height 1.5
+	border-radius 0
+	transition color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+
+	&:hover, &:focus {
+		text-decoration none
+	}
+
+	&:focus, &.focus {
+		outline 0
+		box-shadow none
+	}
+
+	&:disabled, &.disabled {
+		opacity .5
+		box-shadow none
+		pointer-events none
+	}
+
+	&:not([disabled]):not(.disabled) {
+		cursor pointer
+	}
+
+	// FOREACH COLORS AND GENERATE BUTTONS AND OUTLINE BUTTONS
+	for color in colors {
+		&-{color[0]} {
+			color $white
+			background-color color[1]
+			border-color color[1]
+
+			&:hover {
+				color $white
+				background-color color[1]
+				border-color color[1]
+			}
+
+			&:focus, &.focus {
+				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
+			}
+
+			&.disabled, &:disabled {
+				color $white
+				background-color color[1]
+				border-color color[1]
+			}
+
+			&:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+				color $white
+				background-color color[1]
+				border-color color[1]
+			}
+
+			&:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus {
+				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
+			}
+		}
+
+		&-{color[0]}-outline {
+			color color[1]
+			background-color $white
+			border-color color[1]
+
+			&:hover {
+				color $white
+				background-color color[1]
+				border-color color[1]
+			}
+
+			&:focus, &.focus {
+				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
+			}
+
+			&.disabled, &:disabled {
+				color color[1]
+				background-color $white
+				border-color color[1]
+			}
+
+			&:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
+				color color[1]
+				background-color $white
+				border-color color[1]
+			}
+
+			&:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus {
+				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
+			}
+		}
+	}
+
+	&-block {
+		display block
+		width 100%
+	}
+}
+
+// Specificity overrides
+input[type='submit'], input[type='reset'], input[type='button'] {
+	&.btn-block {
+		width 100%
+	}
+}

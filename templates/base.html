@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}Django flow{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/icon_dis_500.png' %}" />
+
+    <link href="{% static 'css/vendor.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href=""><img src="{% static 'img/django_logo.png' %}" height="40"></a>
+            <button class="navbar-toggler hamburger hamburger--collapse" type="button" data-toggle="collapse"
+                data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Menu">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="">Teszt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/nyitraibence" target="_blank">My
+                            github</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+
+    <script src="{% static 'js/vendor.min.js' %}"></script>
+    <script src="{% static 'js/main.min.js' %}"></script>
+
+</body>
+
+</html>

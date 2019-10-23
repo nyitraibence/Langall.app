@@ -1,0 +1,28 @@
+#
+# ALLOW OFFICE ID ONLY
+#
+#
+#SetEnvIF X-Forwarded-For "192.168.1.2" AllowIP
+#SetEnvIF X-Forwarded-For "192.168.2.3" AllowIP
+#<RequireAny>
+#Require env AllowIP
+#</RequireAny>
+
+<FilesMatch "\.(?i:gif|jpe?g|png|ico|css|js|swf)$">
+
+  <IfModule mod_headers.c>
+    Header set Cache-Control "max-age=172800, public, must-revalidate"
+  </IfModule>
+
+</FilesMatch>
+
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^/(/.*|)$ /index.php [L,NC]
+RewriteRule ^style(/.*|)$ /style.php [L,NC]
+
+RewriteRule ^404(/.*|)$ /404.php [L,NC]
+ErrorDocument 404 /404.php
