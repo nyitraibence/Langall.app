@@ -1,104 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Core app{% endblock %}
+{% block title %}Langall app{% endblock %}
 
 {% block content %}
 <section class="container">
     <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary">PRIMARY</button>
-            <button type="button" class="btn btn-primary" disabled>PRIMARY DISABLED</button>
-        </div>
-        <div class="col">
-            <button type="button" class="btn btn-secondary">SECONDARY</button>
-            <button type="button" class="btn btn-secondary" disabled>SECONDARY DISABLED</button>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col">
-            <a class="btn btn-primary" href="#" role="button">Link</a>
-            <button class="btn btn-primary" type="submit">Button</button>
-            <input class="btn btn-primary" type="button" value="Input">
-            <input class="btn btn-primary" type="submit" value="Submit">
-            <input class="btn btn-primary" type="reset" value="Reset">
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col">
-            <h1>Static load test:</h1>
-            <img src="{% static 'img/django_logo.png' %}" width="60">
-
-            <h2 class="mb-3">FONT SIZE TEST H2 <small>(mb-3: 15px)</small></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat rhoncus nisl, a convallis
-                nisl feugiat id. Sed ornare ipsum eu hendrerit tempor. Sed eget gravida diam. Duis sem lacus,
-                lobortis a varius non, fermentum nec justo. Nam feugiat sit amet eros a tempus. Praesent fringilla
-                lobortis metus, sed volutpat ligula. Nullam tincidunt accumsan malesuada. Aenean ornare velit ipsum,
-                quis porttitor lacus egestas non. Mauris semper odio sit amet ipsum ultricies, a ullamcorper enim
-                mollis. Donec nibh leo, hendrerit vitae tortor et, rhoncus mattis tortor. Aenean nec ornare erat,
-                vel sodales sem. Praesent luctus, augue sed viverra rutrum, metus purus tempor purus, non malesuada
-                enim dolor eget nunc. Fusce diam tortor, rutrum in aliquet ac, sollicitudin in nibh. Integer sit
-                amet quam tempor, vestibulum mi ac, gravida magna. Fusce egestas porta est, a dictum massa ultricies
-                ut.</p>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="">Lorem ipsum</label>
-                <select name="select_1" id="select_1">
-                    <option value="1">Lorem</option>
-                    <option value="2">Ipsum</option>
-                    <option value="3">Dolor</option>
-                    <option value="4">Sit</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="">Lorem ipsum</label>
-                <select name="select_2" id="select_2">
-                    <option value="1">Lorem</option>
-                    <option value="2">Ipsum</option>
-                    <option value="3">Dolor</option>
-                    <option value="4">Sit</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-2">
-        <div class="col">
-            <h2 class="my-3">Tomorrow I want some:</h2>
-            <ul>
-                <li class="mb-2">
-                    <input type="radio" id="f-option" name="selector">
-                    <label for="f-option">Pizza</label>
-                </li>
-                <li class="mb-2">
-                    <input type="radio" id="s-option" name="selector">
-                    <label for="s-option">Cheese</label>
-                </li>
-                <li>
-                    <input type="radio" id="t-option" name="selector" checked>
-                    <label for="t-option">Money</label>
-                </li>
-            </ul>
-        </div>
-        <div class="col">
-            <h2 class="my-3">Tomorrow I want soooome:</h2>
-            <ul>
-                <li class="mb-2">
-                    <input type="checkbox" id="c1-option" name="checkbox">
-                    <label for="c1-option">Pizza</label>
-                </li>
-                <li class="mb-2">
-                    <input type="checkbox" id="c2-option" name="checkbox" disabled>
-                    <label for="c2-option">Bacon</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="c3-option" name="checkbox" checked>
-                    <label for="c3-option">Money</label>
-                </li>
-            </ul>
+        <div class="col text-center">
+            <h1>Homepage</h1>
         </div>
     </div>
 </section>
