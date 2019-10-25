@@ -6,7 +6,14 @@
 <section class="container">
     <div class="row">
         <div class="col text-center">
-            <h1>Homepage</h1>
+            <h1>Langall.app</h1>
+            {% if user.is_authenticated %}
+            Üdv {{ user.first_name }}!
+            <br><a href="{% url 'logout' %}">Kijelentkezés</a>
+            {% else %}
+            <a href="{% url 'login' %}">Bejelentkezés</a>
+            <a href="">Regisztráció</a>
+            {% endif %}
         </div>
     </div>
 </section>

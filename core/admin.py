@@ -12,13 +12,6 @@ class TeacherProfileInline(admin.TabularInline):
 class CustomUserAdmin(admin.ModelAdmin):
     inlines = [TeacherProfileInline]
 
-    def get_formsets_with_inlines(self, request, obj=None):
-        for inline in self.get_inline_instances(request, obj):
-            # FILTER THE INLINE FORMSET TO YIELD HERE
-            # For example, given obj.related_instances value
-            if obj is not None and obj.related_instances.count() > 0:
-                yield inline.get_formset(request, obj), inline
-
     list_display = ['email', 'first_name',
                     'last_name', 'is_teacher', 'is_active', ]
     fieldsets = (
