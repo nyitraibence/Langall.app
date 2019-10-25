@@ -60,6 +60,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',                # for social_auth extra data
+                'social_django.context_processors.login_redirect',          # for social_auth extra data
+                                                                            # these alow us to reference backend data in the template
             ],
         },
     },
@@ -123,3 +126,17 @@ EMAIL_HOST = os.getenv('ENV_EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('ENV_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('ENV_EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('ENV_EMAIL_PORT')
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('FB_APP_ID')               # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('FB_APP_SECRET')        # App Secret
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']             # afor social_auth extradata
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {      
+    'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
