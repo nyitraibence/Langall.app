@@ -12,7 +12,8 @@
             <br><a href="{% url 'logout' %}">Kijelentkezés</a>
             {% else %}
             <a href="{% url 'login' %}">Bejelentkezés</a>
-            <a href="{% url 'register' %}">Regisztráció</a>
+            <a href="{% url 'register' %}">Regisztráció</a><br>
+            <strong>-- vagy --</strong>
             {% endif %}
         </div>
     </div>

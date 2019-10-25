@@ -55,7 +55,6 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.is_active = True
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # important to add the backend !!!
-        # return redirect('homepage')
-        return render(request, 'homepage.html')
+        return redirect('homepage')
     else:
         return HttpResponse('Érvénytelen, vagy elavult aktivációs link!')
