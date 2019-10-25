@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # for email sending feature
 from .forms import CustomUserCreationForm
@@ -45,7 +45,7 @@ def register(request):
 
 
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = get_user_model().objects.get(pk=uid)
@@ -54,8 +54,8 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        login(request, user)
-        # return redirect('home')
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # important to add the backend !!!
+        # return redirect('homepage')
         return render(request, 'homepage.html')
     else:
         return HttpResponse('Érvénytelen, vagy elavult aktivációs link!')
