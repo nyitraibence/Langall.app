@@ -78,13 +78,6 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-]
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -119,3 +112,9 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_USE_TLS = os.getenv('ENV_EMAIL_USE_TLS')
+EMAIL_HOST = os.getenv('ENV_EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('ENV_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('ENV_EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('ENV_EMAIL_PORT')
