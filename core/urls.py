@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView
 from . import views
 
 urlpatterns = [
+    path('profile/', views.profile, name='profile'),
     path('social-auth/', include('social_django.urls', namespace="social")),
     path('accounts/register/', views.register, name='register'),
     path('accounts/login/', LoginView.as_view(authentication_form=AuthenticationForm), name='login'),

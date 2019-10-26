@@ -19,6 +19,10 @@ def homepage(request):
     # new_user_activation.send(sender="none", user_data= "Gary")       # signal for welcome mail sending
     return render(request, 'homepage.html')
 
+def profile(request):
+    return render(request, 'profile.html')
+
+
 
 def register(request):
     if request.method == 'POST':

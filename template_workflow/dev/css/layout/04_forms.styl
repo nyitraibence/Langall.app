@@ -32,10 +32,18 @@ input {
 	border-radius 5px
 	padding .5em
 	text-align center
+	width 100%
+	max-width 300px
 }
 
 label {
 	color #666666
+	margin 0
+
+	@media (max-width: 575px) {
+		font-size 14px
+		line-height 18px
+	}
 }
 
 input:-webkit-autofill {

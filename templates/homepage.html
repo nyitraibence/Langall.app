@@ -9,8 +9,8 @@
             <div class="col text-center">
                 <h1>Langall.app</h1>
                 {% if user.is_authenticated %}
-                Üdv {{ user.first_name }}!
-                <br><a href="{% url 'logout' %}">Kijelentkezés</a>
+                <h3>Üdv {{ user.first_name }}!</h3>
+                <br><a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
                 {% else %}
                 <a class="btn btn-secondary" href="{% url 'register' %}">Regisztráció</a>
                 <a class="btn btn-primary" href="{% url 'login' %}">Bejelentkezés</a>
