@@ -11,9 +11,12 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 # !!! for using "User" this is necessary:
 from django.contrib.auth import get_user_model
+# for signals:
+from .signals import new_user_activation, new_social_user
 
 
 def homepage(request):
+    # new_user_activation.send(sender="none", user_data= "Gary")       # signal for welcome mail sending
     return render(request, 'homepage.html')
 
 
@@ -53,8 +56,9 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
+        new_user_activation.send(sender=user)                                       # signal for welcome mail sending
         user.save()
-        login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # important to add the backend !!!
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')   # important to add the backend !!!
         return redirect('homepage')
     else:
         return HttpResponse('Érvénytelen, vagy elavult aktivációs link!')

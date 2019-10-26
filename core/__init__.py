@@ -1,0 +1,1 @@
+default_app_config = 'core.apps.CoreConfig'         # without this, signals won't work
