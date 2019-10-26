@@ -6,11 +6,25 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col text-center">
-                <h1>Profil</h1>
-                <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
-
+            <div class="col-0 col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="profile-header">
+                    <h1>Profil</h1>
+                    <div class="text-center">
+                        <h5 class="profile-name">{{ profile.last_name }} {{ profile.first_name }}</h5>
+                        <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
+                    </div>
+                </div>
+                <p>{{ profile.last_name }}</p>
+                <p>{{ profile.first_name }}</p>
+                <p>{{ profile.email }}</p>
+                <p>{{ profile.city }}</p>
+                <p>{{ profile.location }}</p>
+                <p>{{ profile.interest_lang_1 }}</p>
+                <p>{{ profile.interest_lang_2 }}</p>
+                <p>{{ profile.interest_lang_3 }}</p>
             </div>
+            <div class="col-0 col-lg-2"></div>
         </div>
     </div>
 </section>

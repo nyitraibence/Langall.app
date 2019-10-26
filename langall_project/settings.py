@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'cuser',                # third party
     'social_django',        # third party
     'core',                 # dev
+    'app_teachers',
+    'app_static_pages',
 ]
 
 

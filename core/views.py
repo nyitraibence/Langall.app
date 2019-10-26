@@ -16,11 +16,14 @@ from .signals import new_user_activation
 
 
 def homepage(request):
-    # new_user_activation.send(sender="none", user_data= "Gary")       # signal for welcome mail sending
     return render(request, 'homepage.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    if request.user.is_authenticated:
+        current_user = request.user
+        return render(request, 'profile.html', {'profile' : current_user})
+    else:
+        return redirect('login')
 
 
 
