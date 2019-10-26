@@ -44,7 +44,7 @@ def register(request):
             return render(request, 'verify_register.html')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 
 
