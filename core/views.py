@@ -12,7 +12,7 @@ from django.core.mail import EmailMessage
 # !!! for using "User" this is necessary:
 from django.contrib.auth import get_user_model
 # for signals:
-from .signals import new_user_activation, new_social_user
+from .signals import new_user_activation
 
 
 def homepage(request):

@@ -10,4 +10,5 @@ class CoreConfig(AppConfig):
         print(">>>>>> apps.py signals ready to fire")
         print(">>>")
         print("")
-        from .signals import welcome_new_user, new_social_user
+        from .signals import welcome_new_user
+        from django.db.models.signals import post_save
