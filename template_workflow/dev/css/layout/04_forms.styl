@@ -32,12 +32,10 @@ input {
 	border-radius 5px
 	padding .5em
 	text-align center
-	width 100%
-	max-width 300px
 }
 
 label {
-	color #666666
+	color $grey
 	margin 0
 
 	@media (max-width: 575px) {
@@ -49,6 +47,7 @@ label {
 input:-webkit-autofill {
 	-webkit-animation-name autofill
 	-webkit-animation-fill-mode both
+	-webkit-text-fill-color $grey
 }
 
 /*

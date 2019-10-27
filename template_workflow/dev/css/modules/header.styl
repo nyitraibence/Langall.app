@@ -15,12 +15,20 @@
 
 	.navbar-collapse {
 		.nav-item {
-			padding 0 20px
-
 			.nav-link {
 				color $primary
-				font-size responsive 14px 18px
+				padding 5px 26px
+				font-size 18px
 				font-range 320px 1200px
+			}
+
+			.nav-link-bordered {
+				border 1px solid $primary
+				border-radius 4px
+
+				@media (max-width: 991px) {
+					border none
+				}
 			}
 		}
 	}

@@ -30,9 +30,10 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Rólunk</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'exams' %}">Nyelvvizsga lehetőségek</a></li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil 👨‍🎤</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil
+                            👨‍🎤</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-bordered" href="{% url 'login' %}">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Regisztráció</a></li>
                     {% endif %}
                 </ul>
