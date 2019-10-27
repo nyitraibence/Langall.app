@@ -28,45 +28,49 @@
 <hr>
 <section>
     <div class="container">
-        <p>felhasználó típusok bemutatása:</p>
-        <h3>user</h3>
-        <h3>user + teacher</h3>
-    </div>
-</section>
-<hr>
-<section>
-    <div class="container">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Optio vero sequi explicabo perspiciatis quos earum magnam?
-            Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
-            Magni, aliquid veniam.
-        </p>
-    </div>
-</section>
-<hr>
-<section>
-    <div class="container text-center">
-        <h3>stat 1</h3>
-        <h3>stat 2</h3>
-        <h3>stat 3</h3>
-    </div>
-</section>
-<hr>
-<section>
-    <div class="container text-center">
-        <h2>Iskolák</h2>
-    </div>
-</section>
-<hr>
-<section>
-    <div class="container text-center">
-        <h2>tanárok</h2>
-        <div class="text-left">
-            <h5>teacher 1</h5>
-            <h5>teacher 2</h5>
-            <h5>teacher 3</h5>
+        <div class="row">
+            <div class="col-12">
+                <p>felhasználó típusok bemutatása:</p>
+                <h3>user</h3>
+                <h3>user + teacher</h3>
+            </div>
         </div>
-        <a class="btn btn-primary" href="{% url 'teachers' %}">Összes megtekintése</a>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Optio vero sequi explicabo perspiciatis quos earum magnam?
+                    Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
+                    Magni, aliquid veniam.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h3>stat 1</h3>
+                <h3>stat 2</h3>
+                <h3>stat 3</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>Iskolák</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h2>tanárok</h2>
+                <div class="text-left">
+                    <h5>teacher 1</h5>
+                    <h5>teacher 2</h5>
+                    <h5>teacher 3</h5>
+                </div>
+                <a class="btn btn-primary" href="{% url 'teachers' %}">Összes megtekintése</a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
