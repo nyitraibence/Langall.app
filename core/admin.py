@@ -1,12 +1,7 @@
 from django.contrib import admin
 from cuser.admin import UserAdmin
-from .models import CustomUser, TeacherProfile
-
-
-class TeacherProfileInline(admin.TabularInline):
-    model = TeacherProfile
-    can_delete = False
-    verbose_name_plural = 'Teacher Profile'
+from .models import CustomUser
+from app_teachers.admin import TeacherProfileInline
 
 
 class CustomUserAdmin(admin.ModelAdmin):
