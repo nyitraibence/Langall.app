@@ -33,3 +33,26 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+    
+class CustomUserChangeForm(forms.ModelForm):
+    # password = ReadOnlyPasswordHashField(label=_("Password"),
+    #     help_text=_("Raw passwords are not stored, so there is no way to see "
+    #                 "this user's password, but you can change the password "
+    #                 "using <a href=\"password/\">this form</a>."))
+
+    class Meta:
+        model = CustomUser
+        fields = ("last_name", "first_name", "city", "location", "interest_lang_1", "interest_lang_2",)
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+        f = self.fields.get('user_permissions', None)
+        if f is not None:
+            f.queryset = f.queryset.select_related('content_type')
+
+    def clean_password(self):
+        # Regardless of what the user provides, return the initial value.
+        # This is done here, rather than on the field, because the
+        # field does not have access to the initial value
+        return self.initial["password"]

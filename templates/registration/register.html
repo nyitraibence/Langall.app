@@ -4,29 +4,19 @@
 
 {% block content %}
 <section class="container text-center">
-    <h2>Regisztráció</h2>
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="row">
-            <div class="col-md-6">
-                {{ field.label_tag }}
-            </div>
-            <div class="col-md-6">
-                {{ field }}
-            </div>
-            {% if field.help_text %}
-            <small style="display: none">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-            {% endfor %}
+    <div class="row">
+        <div class="col login-block">
+            <h2>Regisztráció</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Regisztráció</button>
+            </form>
+            <strong>-- vagy --</strong><br><br>
+            <a href="{% url 'social:begin' 'facebook' %}">facebook-al</a><br><br>
+            <a href="#">linked in-nel</a><br>
         </div>
-        {% endfor %}
-        <button type="submit" class="btn btn-primary">Regisztráció</button>
-    </form>
-    <strong>-- vagy --</strong><br><br>
-    <a href="{% url 'social:begin' 'facebook' %}">belépés facebook-al</a><br><br>
-    <a href="#">belépés linked in-nel</a><br>
+    </div>
+
 </section>
 {% endblock %}

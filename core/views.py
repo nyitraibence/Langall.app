@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # for email sending feature
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -21,7 +21,15 @@ def homepage(request):
 def profile(request):
     if request.user.is_authenticated:
         current_user = request.user
-        return render(request, 'profile.html', {'profile' : current_user})
+        if request.method == 'POST':
+            update_form = CustomUserChangeForm(request.POST, instance=request.user)
+            if update_form.is_valid():
+                update_form.save()
+                message="Sikeresen frissítetted! ✔️"
+                return render(request, 'profile.html', {'profile' : current_user, 'form':update_form, 'message' : message})
+        else:
+            update_form = CustomUserChangeForm(instance=request.user)
+            return render(request, 'profile.html', {'profile' : current_user, 'form':update_form})
     else:
         return redirect('login')
 
