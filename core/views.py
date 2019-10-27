@@ -26,7 +26,6 @@ def profile(request):
         return redirect('login')
 
 
-
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
