@@ -3,32 +3,27 @@
 {% block title %}Langall app{% endblock %}
 
 {% block content %}
-<section class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="mb-5">Regisztráció</h2>
-            <form method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="row mb-3">
-                    <div class="col-0 col-md-1"></div>
-                    <div class="col-4 col-md-3 text-left">
-                        {{ field.label_tag }}
-                    </div>
-                    <div class="col-8 text-left">
-                        {{ field }}
-                    </div>
-                    {% if field.help_text %}
-                    <small style="display: none">{{ field.help_text }}</small>
-                    {% endif %}
-                    {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                    {% endfor %}
-                </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-primary mt-3">Regisztráció</button>
-            </form>
+<section class="container text-center">
+    <h2>Regisztráció</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="row">
+            <div class="col-md-6">
+                {{ field.label_tag }}
+            </div>
+            <div class="col-md-6">
+                {{ field }}
+            </div>
+            {% if field.help_text %}
+            <small style="display: none">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
         </div>
-    </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Regisztráció</button>
+    </form>
 </section>
 {% endblock %}
