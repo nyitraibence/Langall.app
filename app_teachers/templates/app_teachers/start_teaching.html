@@ -3,30 +3,42 @@
 {% block title %}Langall{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h2>Kezdj el tanítani!</h2>
-            <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Neque vero sit assumenda obcaecati iste,
-                excepturi distinctio ipsam alias dolor velit aperiam odio,
-                placeat repellendus reprehenderit eveniet mollitia nihil.
-                Tenetur, obcaecati?
-            </p>
-            <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Neque vero sit assumenda obcaecati iste,
-                excepturi distinctio ipsam alias dolor velit aperiam odio,
-                placeat repellendus reprehenderit eveniet mollitia nihil.
-                Tenetur, obcaecati?
-            </p>
-            {% if user.is_authenticated %}
-            <h5>Egészítsd ki a profilod a tanítás részleteivel, és meg is vagy!</h5>
-            <p>[form]</p>
-            {% else %}
-            <h5>Regisztrálj be, és töltsd ki a formot!</h5>
-            <a class="btn btn-primary" href="{% url 'register' %}">Regisztráció</a>
-            {% endif %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Kezdj el tanítani!</h2><br><br>
+                <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Neque vero sit assumenda obcaecati iste,
+                    excepturi distinctio ipsam alias dolor velit aperiam odio,
+                    placeat repellendus reprehenderit eveniet mollitia nihil.
+                    Tenetur, obcaecati?
+                </p>
+                <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Neque vero sit assumenda obcaecati iste,
+                    excepturi distinctio ipsam alias dolor velit aperiam odio,
+                    placeat repellendus reprehenderit eveniet mollitia nihil.
+                    Tenetur, obcaecati?
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 text-center mx-auto">
+                {% if user.is_authenticated %}
+                <h5>Egészítsd ki a profilod a tanítás részleteivel, és meg is vagy!</h5>
+                <p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Mehet</button>
+                    </form>
+                </p>
+                {% else %}
+                <br><br>
+                <a class="btn btn-primary float-right" href="">Regisztráció</a>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

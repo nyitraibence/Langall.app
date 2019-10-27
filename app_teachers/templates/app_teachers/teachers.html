@@ -6,8 +6,16 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-md-6 mx-auto text-center">
                 <h2>Válassz tanárt magadnak!</h2>
+                <h4>[filter options]</h4>
+                {% for teacher in teachers %}
+                <hr>
+                <p>{{ teacher.last_name }} {{ teacher.first_name }}, {{ teacher.city }}, {{ teacher.location }}</p>
+                <p>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                    {{ teacher.teacherprofile.teach_lang_3 }}, óradíj: {{ teacher.teacherprofile.base_price }} Ft</p>
+                <p>{{ teacher.teacherprofile.introduction }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
