@@ -3,12 +3,13 @@
 {% block title %}Langall app{% endblock %}
 
 {% block content %}
-<section class="hero">
+<section class="hero jarallax" id="hero-1">
+    <span class="bg-fade-1"></span>
     <div class="container">
         <div class="row text-center">
             <div class="col-md-8 mx-auto">
                 {% if user.is_authenticated %}
-                <br><a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
+                <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
                 <h3>Üdv {{ user.first_name }}!</h3>
                 {% endif %}
                 <h1>Langall.app</h1>
@@ -18,14 +19,13 @@
                     Hic asperiores maiores quod debitis consequuntur sunt modi,
                     sequi odit commodi libero provident omnis.
                 </p>
-                <a class="btn btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
-                <a class="btn btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
+                <a class="btn btn--130 btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
+                <a class="btn btn--130 btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
             </div>
         </div>
     </div>
 </section>
-<hr>
-<section>
+<section class="shadow-1">
     <div class="container">
         <div class="row">
             <div class="col-12">

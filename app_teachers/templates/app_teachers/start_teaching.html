@@ -22,9 +22,9 @@
                 </p>
             </div>
         </div>
+        {% if user.is_authenticated %}
         <div class="row">
-            <div class="col-md-5 text-center mx-auto">
-                {% if user.is_authenticated %}
+            <div class="col-md-5 mx-auto">
                 <h5>Egészítsd ki a profilod a tanítás részleteivel, és meg is vagy!</h5>
                 <p>
                     <form method="post">
@@ -36,9 +36,10 @@
                 {% else %}
                 <br><br>
                 <a class="btn btn-primary float-right" href="">Regisztráció</a>
-                {% endif %}
+
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
