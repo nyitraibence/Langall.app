@@ -130,3 +130,40 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 		color $white
 	}
 }
+
+.btn-social {
+	display block
+	padding .75em
+	margin 10px 0
+	border-radius 4px
+	font-weight bold
+	position relative
+
+	img {
+		height 20px
+		position absolute
+		top 50%
+		transform translateY(-50%)
+		left 15px
+	}
+}
+
+.btn-facebook {
+	color $white
+	background $facebook
+
+	&:hover {
+		color $white
+		text-decoration none
+	}
+}
+
+.btn-linkedin {
+	color #0274b2
+	background #f2f6f9
+
+	&:hover {
+		color #0274b2
+		text-decoration none
+	}
+}

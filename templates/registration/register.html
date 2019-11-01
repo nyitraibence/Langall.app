@@ -12,9 +12,19 @@
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">Regisztráció</button>
             </form>
-            <strong>-- vagy --</strong><br><br>
-            <a href="{% url 'social:begin' 'facebook' %}">facebook-al</a><br><br>
-            <a href="#">linked in-nel</a><br>
+            <div class="social-spacer-wr">
+                <span class="social-spacer">
+                    vagy
+                </span>
+            </div>
+            <a class="btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}">
+                <img src="{% static 'img/facebook_white.svg' %}" alt="facebook Belépés">
+                belépés facebook-al
+            </a>
+            <a class="btn-social btn-linkedin" href="#">
+                <img src="{% static 'img/linkedin.svg' %}" alt="linkedin Belépés">
+                belépés LinkedIn-nel
+            </a>
         </div>
     </div>
 </section>
