@@ -70,7 +70,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 languages-chart-wr">
                 <p>Célunk, hogy lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Optio vero sequi explicabo perspiciatis quos earum magnam?
                     Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
@@ -98,10 +98,25 @@
                 <h3>stat</h3>
             </div>
         </div>
-        <div class="row">
-
-        </div>
         <hr>
+        <!-- <div class="row">
+            <div class="col-md-5">
+                <h3>Tendenciák</h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sunt impedit vel sequi mollitia corporis deserunt in enim
+                    facilis odit voluptatibus qui velit, soluta eos necessitatibus
+                    eum consectetur adipisci officia sed! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sunt impedit vel sequi mollitia corporis deserunt in enim
+                    facilis odit voluptatibus qui velit, soluta eos necessitatibus
+                    eum consectetur adipisci officia sed!
+                </p>
+            </div>
+            <div class="col-md-7 mobile-hide">
+                <canvas id="languages-chart"></canvas>
+            </div>
+        </div>
+        <hr> -->
         <div class="row">
             <div class="col-12  text-center">
                 <h2>Iskolák</h2>
@@ -138,4 +153,8 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 {% endblock %}
