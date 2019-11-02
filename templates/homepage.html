@@ -29,25 +29,43 @@
 <section class="shadow-1">
     <div class="container">
         <H1 class="m-5">Mit nyújt a felület?</H1>
-        <div class="row text-center mb-5">
-            <div class="col-sm-4 col-dm-3 mx-auto">
+        <div class="row text-center mb-5 justify-content-center">
+            <div class="col-sm-4 col-dm-3">
                 <img src="{% static 'img/man1_icon.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Keress magadnak tanárokat</h5>
-                <p>Válaszd ki melyik városban milyen helyen, milyen nyelven szeretnél tanulni, és találd meg a neked
-                    megfelelő tanárt!</p>
+                <p>
+                    Válaszd ki melyik városban, milyen nyelven szeretnél tanulni, és találd meg a legmegfelelőbb tanárt!
+                </p>
             </div>
-            <div class="col-sm-4 col-dm-3 mx-auto">
+            <div class="col-sm-4 col-dm-3">
+                <img src="{% static 'img/timetable.png' %}" alt="langall user manual">
+                <h5 class="font-secondary">Válassz te időpontot</h5>
+                <p>
+                    A tanároknak van élő, folyamatosan frissített órarendje, ahol láthatod mikor érnek rá.
+                    Ha találsz megfelelő időpontot azonnal le is foglalhatod, nem kell várni és telefonálgatni.
+                </p>
+            </div>
+            <div class="col-sm-4 col-dm-3">
                 <img src="{% static 'img/message_icon.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Üzenj nekik</h5>
-                <p>z
+                <p>
                     Ha bejelentkeztél láthatod a tanárok összes elérhetőségét, kérdezhetsz tőlük, és két kattintással
                     időpontot foglalhatsz
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3 mx-auto">
+            <div class="col-sm-4 col-dm-3">
                 <img src="{% static 'img/rating_icon.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Értékeld őket</h5>
-                <p>Segítheted a tanárok munkáját és a többi diáknak a választást értékelésekkel</p>
+                <p>
+                    Segíthetitek egymás választását, és atanárok munkáját értékelésekkel
+                </p>
+            </div>
+            <div class="col-sm-4 col-dm-3">
+                <img src="{% static 'img/graduation.png' %}" alt="langall user manual">
+                <h5 class="font-secondary">Keress nyelvvizsgát</h5>
+                <p>
+                    Ha úgyérzed felkészültél, de nemtudod hol nyelvvizsgázz, segítünk.
+                </p>
             </div>
         </div>
         <hr>
@@ -68,17 +86,20 @@
         <hr>
         <div class="row text-center font-secondary">
             <div class="col-4">
-                <h2>45</h2>
-                <h3>tanárok</h3>
+                <h2>{{ num_users }}</h2>
+                <h3>felhasználó</h3>
             </div>
             <div class="col-4">
-                <h2>122</h2>
-                <h3>kapcsolatok</h3>
+                <h2>{{ num_teachers }}</h2>
+                <h3>tanár</h3>
             </div>
             <div class="col-4">
                 <h2>37</h2>
                 <h3>stat</h3>
             </div>
+        </div>
+        <div class="row">
+
         </div>
         <hr>
         <div class="row">

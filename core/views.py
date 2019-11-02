@@ -16,7 +16,9 @@ from .signals import new_user_activation
 
 
 def homepage(request):
-    return render(request, 'homepage.html')
+    user_count = get_user_model().objects.all().count()
+    teacher_count = get_user_model().objects.filter(is_teacher='True').count()
+    return render(request, 'homepage.html',{'num_users' : user_count, 'num_teachers' : teacher_count})
 
 def profile(request):
     if request.user.is_authenticated:
