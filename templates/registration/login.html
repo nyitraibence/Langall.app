@@ -13,7 +13,9 @@
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Belépés</button>
                 </form>
-                <p class="line-link">Még nincs fiókod? <a href="{% url 'register' %}">regisztrálj.</a></p>
+                <p class="line-link">Még nincs fiókod? <a href="{% url 'register' %}">regisztrálj!</a></p>
+                <p class="line-link">Elfelejtetted a jelszavad? <a href="{% url 'password_reset' %}">igényelj újat</a>
+                </p>
                 <div class="social-spacer-wr">
                     <span class="social-spacer">
                         vagy

@@ -4,14 +4,17 @@
 
 {% block content %}
 <section class="container text-center">
-    <div class="row">
-        <div class="col login-block">
-            <h2>Regisztráció</h2>
+    <h2>Regisztráció</h2>
+    <div class="row pt-4">
+        <div class="col-md-5">
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">Regisztráció</button>
             </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
             <div class="social-spacer-wr">
                 <span class="social-spacer">
                     vagy
@@ -25,6 +28,12 @@
                 <img src="{% static 'img/linkedin.svg' %}" alt="linkedin Belépés">
                 belépés LinkedIn-nel
             </a>
+            <div class="text-left mt-4 font-grey">
+                <img src="{% static 'img/information.svg' %}" alt="információ" width="20px" class="mb-2">
+                <p>
+                    Közösségi oldalon keresztüli belépés során csak az általad jóváhagyott adatokat kérjük le,
+                    az <a href="#">Adatvédelmi nyilatkozatunk</a>-nak megfelelően.</p>
+            </div>
         </div>
     </div>
 </section>

@@ -84,4 +84,4 @@ def new_social(request):
     return render(request, 'new_social_user.html')
 
 def tester(request):
-    return render(request, 'verify_register.html')
+    return render(request, 'registration/password_reset_confirm.html')
