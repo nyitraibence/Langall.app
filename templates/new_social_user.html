@@ -7,13 +7,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mx-auto">
+                <hr>
+                {{user}}
+                <hr>
+                {{prifile_name}} <br>
+                <img src="{{profile_pic_url}}" alt="facebook rofile pic"><br>
+                <a href="{{profile_url}}" target="_blank">Facebook profil</a><br>
+                <hr>
                 <h1>
                     Új social account ! <br>
                     Köszönjük, hogy regisztráltál!
                 </h1>
                 <h4>Közösségi fiókkal regisztráltál -</h4>
                 <p>Adj meg egy jelszót, hogy be tudj majd lépni facebook vagy LinkedIn nélkül is bármikor.</p>
-                <a class="btn btn--130 btn-primary" href="{% url 'homepage' %}">tovább a főoldalra</a>
             </div>
         </div>
     </div>

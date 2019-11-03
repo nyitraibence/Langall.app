@@ -22,16 +22,30 @@ def homepage(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        current_user = request.user
+        content={
+            "person" : request.user,
+            "form" : CustomUserChangeForm(instance=request.user),
+            "has_fb_flag" : False
+        }
+            
+        person = request.user
+        if(person.social_auth.exists()):
+            persons_facebook = person.social_auth.get(provider="facebook")
+            content.update({
+                "profile_url" : persons_facebook.extra_data['profile_url'],
+                "profile_pic_url" : persons_facebook.extra_data['picture']['data']['url'],
+                "has_fb_flag" : True
+            })
+        
         if request.method == 'POST':
             update_form = CustomUserChangeForm(request.POST, instance=request.user)
             if update_form.is_valid():
                 update_form.save()
                 message="Sikeresen frissítetted! ✔️"
-                return render(request, 'profile.html', {'profile' : current_user, 'form':update_form, 'message' : message})
+                content.update({"message" : message})
+                return render(request, 'profile.html', content)
         else:
-            update_form = CustomUserChangeForm(instance=request.user)
-            return render(request, 'profile.html', {'profile' : current_user, 'form':update_form})
+            return render(request, 'profile.html', content)
     else:
         return redirect('login')
 
@@ -95,4 +109,10 @@ def new_social(request):
 
 # ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
-    return render(request, 'registration/password_reset_confirm.html')
+    person = request.user
+    persons_facebook = person.social_auth.get(provider="facebook")
+    profile_name = persons_facebook.extra_data['name']
+    profile_url = persons_facebook.extra_data['profile_url']
+    profile_pic_url = persons_facebook.extra_data['picture']['data']['url']
+
+    return render(request, 'new_social_user.html', {'prifile_name':profile_name, 'profile_url':profile_url, 'profile_pic_url':profile_pic_url})

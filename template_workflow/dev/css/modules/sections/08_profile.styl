@@ -1,0 +1,20 @@
+.prof-img-container {
+    background $light-grey
+    height 200px
+    width 200px
+    border 1px solid $light-grey
+    border-radius 50%
+    overflow hidden
+
+    @media (max-width: 575px) {
+        margin 15px auto
+        width 120px
+        height 120px
+    }
+
+    img {
+        width 100%
+        height 100%
+        object-fit cover
+    }
+}

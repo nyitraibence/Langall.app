@@ -6,28 +6,46 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mx-auto">
-                <div class="profile-header">
-                    <h1>👨‍🎤Profil</h1>
-                    <div class="text-right">
-                        <h5 class="profile-name">{{ profile.last_name }} {{ profile.first_name }}</h5>
+            <div class="col-12 profile-header">
+                <h1>Profil</h1>
+                <div class="text-right">
+                    <h5 class="profile-name">{{ profile.last_name }} {{ profile.first_name }}</h5>
 
-                        <a class="btn btn-cold u-md-hide" href="{% url 'logout' %}">Kijelentkezés</a>
-                    </div>
+                    <a class="btn btn-cold u-md-hide" href="{% url 'logout' %}">Kijelentkezés</a>
                 </div>
-                <p>{{ profile.last_name }}</p>
-                <p>{{ profile.first_name }}</p>
-                <p>{{ profile.email }}</p>
-                <p>{{ profile.city }}</p>
-                <p>{{ profile.location }}</p>
-                <p>{{ profile.interest_lang_1 }}</p>
-                <p>{{ profile.interest_lang_2 }}</p>
-                <p>{{ profile.interest_lang_3 }}</p>
+            </div>
+        </div>
+
+        <div class="row font-grey">
+            <div class="col-md-3">
+                <div class="prof-img-container">
+                    {% if has_fb_flag %}
+                    <img src="{{profile_pic_url}}" alt="profile avatar">
+                    {% else %}
+                    <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p>{{ person.last_name }} {{ person.first_name }}</p>
+                <p>{{ person.email }}</p>
+                <p>{{ person.city }}</p>
+                <p>{{ person.location }}</p>
+                <p>{{ person.interest_lang_1 }}</p>
+                <p>{{ person.interest_lang_2 }}</p>
+                <p>{{ person.interest_lang_3 }}</p>
+                {% if has_fb_flag %}
+                <a href="{{profile_url}}" class="btn btn-facebook" target="_blank"><img
+                        src="{% static 'img/facebook_white.svg' %}" alt="facebook link" height="20px">
+                </a>
+                {% endif %}
                 <div class="d-flex justify-content-end o-md-hide">
                     <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
                 </div>
             </div>
         </div>
+
+
         <hr>
 
         <h3>{{ message }}</h3>
