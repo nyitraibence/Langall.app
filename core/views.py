@@ -78,3 +78,10 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         return redirect('homepage')
     else:
         return HttpResponse('Érvénytelen, vagy elavult aktivációs link!')
+
+
+def new_social(request):
+    return render(request, 'new_social_user.html')
+
+def tester(request):
+    return render(request, 'verify_register.html')
