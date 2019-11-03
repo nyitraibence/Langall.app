@@ -130,9 +130,13 @@ EMAIL_HOST_USER = os.getenv('ENV_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('ENV_EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('ENV_EMAIL_PORT')
 
+# SOCIAL config
+
 SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('FB_APP_ID')               # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('FB_APP_SECRET')        # App Secret
+
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new_social/'
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']             # afor social_auth extradata
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {      
