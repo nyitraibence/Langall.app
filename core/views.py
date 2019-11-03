@@ -83,5 +83,16 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
 def new_social(request):
     return render(request, 'new_social_user.html')
 
+
+
+
+
+
+
+
+
+
+
+# ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
     return render(request, 'registration/password_reset_confirm.html')
