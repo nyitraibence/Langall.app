@@ -5,3 +5,6 @@ def about(request):
 
 def exams(request):
     return render(request, 'app_static_pages/exams.html')
+
+def contact(request):
+    return render(request, 'app_static_pages/contact.html')
