@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Langall{% endblock %}
 {% block content %}
 <section>
@@ -6,7 +7,10 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h3>Lépj be az email fiókodba és erősítsd meg a regisztrációt egy gombnyomással!</h3>
-                <a href="https://mail.google.com/mail/">Tovább a gmail-re</a>
+                <a href="https://mail.google.com/mail/">
+                    <div>tovább a gmail-re</div>
+                    <img src="{% static 'img/gmail.svg' %}" alt="tovább a gmail-re" width="100px">
+                </a>
             </div>
         </div>
     </div>

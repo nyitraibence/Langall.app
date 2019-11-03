@@ -18,6 +18,7 @@
                         <div class="teacher-card__text">
                             <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
                             <p>{{ teacher.city }}, {{ teacher.location }}</p>
+                            <p>{{ass.extra_data.picture.data.url}}</p>
                             <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
                                 {{ teacher.teacherprofile.teach_lang_3 }}</h5>
                             {% if user.is_authenticated %}
@@ -52,9 +53,8 @@
                         </div>
                     </div>
                 </div>
-
-
                 {% endfor %}
+
             </div>
         </div>
     </div>
