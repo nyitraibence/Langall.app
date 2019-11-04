@@ -5,26 +5,23 @@
 {% block content %}
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col-12 profile-header">
-                <h1>Profil</h1>
-                <div class="text-right">
-                    <h5 class="profile-name">{{ profile.last_name }} {{ profile.first_name }}</h5>
-
-                    <a class="btn btn-cold u-md-hide" href="{% url 'logout' %}">Kijelentkezés</a>
-                </div>
+        <div class="d-flex justify-content-between">
+            <h1>Profil</h1>
+            <div>
+                <h5>{{ person.last_name }} {{ person.first_name }}</h5>
+                <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
             </div>
         </div>
 
-        <div class="row font-grey">
+        <hr>
+
+        <div class="row">
             <div class="col-md-3">
-                <div class="prof-img-container">
-                    {% if has_fb_flag %}
-                    <img src="{{profile_pic_url}}" alt="profile avatar">
-                    {% else %}
-                    <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar">
-                    {% endif %}
-                </div>
+                {% if has_fb_flag %}
+                <img src="{{profile_pic_url}}" alt="profile avatar" width="200px">
+                {% else %}
+                <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar" width="200px">
+                {% endif %}
             </div>
             <div class="col-md-4">
                 <p>{{ person.last_name }} {{ person.first_name }}</p>
@@ -35,19 +32,16 @@
                 <p>{{ person.interest_lang_2 }}</p>
                 <p>{{ person.interest_lang_3 }}</p>
                 {% if has_fb_flag %}
-                <a href="{{profile_url}}" class="btn btn-facebook" target="_blank"><img
-                        src="{% static 'img/facebook_white.svg' %}" alt="facebook link" height="20px">
+                <a href="{{profile_url}}" class="btn btn-facebook" target="_blank">
+                    <img src="{% static 'img/facebook_white.svg' %}" alt="facebook link" height="20px">
                 </a>
                 {% endif %}
-                <div class="d-flex justify-content-end o-md-hide">
-                    <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
-                </div>
             </div>
         </div>
 
-
         <hr>
 
+        <h2>Adatok módosítása:</h2>
         <h3>{{ message }}</h3>
         <form method="post">
             {% csrf_token %}
@@ -72,7 +66,7 @@
             </div>
         </form>
         <div class="row">
-            <div class="col-lg-12 mx-auto">
+            <div class="col-12">
                 <hr>
                 <h2>Érdekel a tanítás?</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.

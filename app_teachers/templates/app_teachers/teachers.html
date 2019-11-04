@@ -4,58 +4,38 @@
 
 {% block content %}
 <section>
-    <div class="container text-center">
+    <div class="container">
         <h2>Válassz tanárt magadnak!</h2>
+        <hr>
         <div class="row">
-            <div class="col-lg-6 mx-auto">
 
-                {% for teacher in teachers %}
-                <div class="teacher-card-wr">
-                    <div class="teacher-card">
-                        <div class="teacher-card__img-container">
-                            <img src="{% static 'img/female_teacher.png' %}" alt="teacher">
-                        </div>
-                        <div class="teacher-card__text">
-                            <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
-                            <p>{{ teacher.city }}, {{ teacher.location }}</p>
-                            <p>{{ass.extra_data.picture.data.url}}</p>
-                            <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
-                                {{ teacher.teacherprofile.teach_lang_3 }}</h5>
-                            {% if user.is_authenticated %}
-                            <a href="#" class="teacher-card__bookmark">
-                                <img src="{% static 'img/bookmark.svg' %}" alt="tanár könyvjelző">
-                            </a>
-                            {% endif %}
-                            <h5 class="teacher-card__price">{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
-                            <div class="teacher-card__rating">
-                                <p>5.0 <small>(14 értékelés)</small></p>
-                                <span>⭐⭐⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pb-3 ">
-                        <a class="more-teacher-info" data-toggle="collapse" href="#teacher-{{teacher.id}}" role="button"
-                            aria-expanded="false" aria-controls="teacher-{{teacher.id}}">
-                            <img src="{% static 'img/down_arrow_sec.svg' %}" alt="more about langall teacher"
-                                width="30px">
-                        </a>
-                    </div>
-                    <div class="collapse" id="teacher-{{teacher.id}}">
-                        <div class="teacher-extra-info">
-                            {% if user.is_authenticated %}
-                            <p>📞 +36 30 3546993</p>
-                            <p>📩 {{teacher.email}}</p>
-                            {% else %}
-                            <p>📞 +36...</p>
-                            <p>📩 ...</p>
-                            {% endif %}
-                            <p>{{ teacher.teacherprofile.introduction }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-
+            {% for teacher in teachers %}
+            <div class="col-md-4">
+                <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
+                <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                <p>{{ teacher.city }}, {{ teacher.location }}</p>
+                <p>{{ass.extra_data.picture.data.url}}</p>
+                <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                    {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                {% if user.is_authenticated %}
+                <a href="#">
+                    <img src="{% static 'img/bookmark.svg' %}" alt="tanár könyvjelző" height="30px">
+                </a>
+                {% endif %}
+                <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                <p>5.0 <small>(14 értékelés)</small></p>
+                <span>⭐⭐⭐⭐⭐</span>
+                {% if user.is_authenticated %}
+                <p>📞 +36 30 3546993</p>
+                <p>📩 {{teacher.email}}</p>
+                {% else %}
+                <p>📞 +36...</p>
+                <p>📩 ...</p>
+                {% endif %}
+                <p>{{ teacher.teacherprofile.introduction }}</p>
             </div>
+            {% endfor %}
+
         </div>
     </div>
 </section>

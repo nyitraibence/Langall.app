@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Érvénytelen link{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h3 class="mb-5 text-center">
+                    ❌<br><br>
+                    A link érvénytelen, valószínűleg mert már használták, vagy lejárt.
+                </h3>
+                <p></p>
+                <div class="text-center">
+                    <a class="btn btn--130 btn-primary" href="{% url 'homepage' %}">Főoldal</a>
+                    <a class="btn btn--130 btn-contact" href="{% url 'contact' %}">Kérj segítséget!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

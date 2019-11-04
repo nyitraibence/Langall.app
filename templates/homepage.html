@@ -3,6 +3,8 @@
 {% block title %}Langall app{% endblock %}
 
 {% block content %}
+
+<!-- HERO BEGIN -->
 <section class="hero">
     <!-- add id="hero-1" and jarallax class for bg -->
     <span class="bg-fade-1"></span>
@@ -27,19 +29,20 @@
     </div>
     <img class="corner_icon" src="{% static 'img/corner_0.svg' %}" alt="more info">
 </section>
+<!-- HERO END -->
+
+<!-- FEATURES BEGIN -->
 <section class="shadow-1">
     <div class="container">
         <H1 class="m-5">Mit nyújt a felület?</H1>
         <div class="row text-center mb-5 justify-content-center">
             <div class="col-sm-4 col-dm-3">
-                <img src="{% static 'img/search_teachers.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Keress magadnak tanárokat</h5>
                 <p>
                     Válaszd ki melyik városban, milyen nyelven szeretnél tanulni, és találd meg a neked való tanárt!
                 </p>
             </div>
             <div class="col-sm-4 col-dm-3">
-                <img src="{% static 'img/timetable.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Válassz szabadon időpontot</h5>
                 <p>
                     A tanároknak élő, folyamatosan frissített órarendje van, ahol láthatod mikor tudnak fogadni.
@@ -47,7 +50,6 @@
                 </p>
             </div>
             <div class="col-sm-4 col-dm-3">
-                <img src="{% static 'img/message_icon.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Üzenj nekik</h5>
                 <p>
                     Ha bejelentkeztél láthatod a tanárok összes elérhetőségét, kérdezhetsz tőlük,
@@ -55,23 +57,18 @@
                 </p>
             </div>
             <div class="col-sm-4 col-dm-3">
-                <img src="{% static 'img/rating_icon.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Értékeld őket</h5>
                 <p>
                     Segíthetitek egymás választását, és a tanárok munkáját értékelésekkel.
                 </p>
             </div>
             <div class="col-sm-4 col-dm-3">
-                <img src="{% static 'img/graduation.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Nyelvvizsgázz</h5>
                 <p>
                     Ha úgyérzed felkészültél, de nemtudod hol nyelvvizsgázz, mi segítünk.
                 </p>
             </div>
-        </div>
-        <div class="row text-center">
             <div class="col-sm-4 col-dm-3 mx-auto">
-                <img src="{% static 'img/teacher_icon2.png' %}" alt="langall user manual">
                 <h5 class="font-secondary">Vagy taníts!</h5>
                 <p>
                     Eleget tudsz, hogy taníts másokat? Regisztrálj be és adj annyi órát amennyit szeretnél.
@@ -80,7 +77,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12 languages-chart-wr">
+            <div class="col-12">
                 <p>Célunk, hogy lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Optio vero sequi explicabo perspiciatis quos earum magnam?
                     Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
@@ -109,26 +106,8 @@
             </div>
         </div>
         <hr>
-        <!-- <div class="row">
-            <div class="col-md-5">
-                <h3>Tendenciák</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Sunt impedit vel sequi mollitia corporis deserunt in enim
-                    facilis odit voluptatibus qui velit, soluta eos necessitatibus
-                    eum consectetur adipisci officia sed! Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Sunt impedit vel sequi mollitia corporis deserunt in enim
-                    facilis odit voluptatibus qui velit, soluta eos necessitatibus
-                    eum consectetur adipisci officia sed!
-                </p>
-            </div>
-            <div class="col-md-7 mobile-hide">
-                <canvas id="languages-chart"></canvas>
-            </div>
-        </div>
-        <hr> -->
-        <div class="row">
-            <div class="col-12  text-center">
+        <div class="row schools">
+            <div class="col-12 text-center">
                 <h2>Iskolák</h2>
             </div>
             <div class="col-sm-7">
@@ -139,7 +118,7 @@
                     Quae quidem amet voluptas cum qui!
                 </p>
             </div>
-            <div class="col-sm-5 schools">
+            <div class="col-sm-5">
                 <ul>
                     <li>Nyelvvizsgázz egy kiemelt akkreditált helyen</li>
                     <li>Szerezz kedvezményeket</li>

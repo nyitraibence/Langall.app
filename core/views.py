@@ -91,7 +91,7 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')   # important to add the backend !!!
         return redirect('homepage')
     else:
-        return HttpResponse('Érvénytelen, vagy elavult aktivációs link!')
+        return render(request, 'registration/invalid_registration_link.html')
 
 
 def new_social(request):
