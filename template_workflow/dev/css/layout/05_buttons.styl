@@ -121,6 +121,10 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	min-width 130px !important
 }
 
+.btn--250 {
+	min-width 250px !important
+}
+
 // BUTTON COLOR
 .btn-cold {
 	color $white
@@ -173,6 +177,16 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	background #FF9700
 
 	// background #FFa600
+	&:hover {
+		color $white
+		filter brightness(108%)
+	}
+}
+
+.btn-teacher {
+	color $white
+	background $teacher_color
+
 	&:hover {
 		color $white
 		filter brightness(108%)

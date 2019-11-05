@@ -22,8 +22,14 @@
                     Hic asperiores maiores quod debitis consequuntur sunt modi,
                     sequi odit commodi libero provident omnis.
                 </p>
+                {% if user.is_teacher %}
+                <a class="btn btn-teacher btn--250 mt-2" href="{% url 'teacher_panel' %}">
+                    Tanári felületem
+                </a>
+                {% else %}
                 <a class="btn btn--130 btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
                 <a class="btn btn--130 btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
+                {% endif %}
             </div>
         </div>
     </div>

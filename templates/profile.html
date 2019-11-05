@@ -36,6 +36,13 @@
                     <img src="{% static 'img/facebook_white.svg' %}" alt="facebook link" height="20px">
                 </a>
                 {% endif %}
+                <br>
+                {% if user.is_teacher %}
+                <a href="{% url 'teacher_panel' %}" class="btn btn-teacher mt-2">
+                    Tanár
+                </a>
+                {% endif %}
+
             </div>
         </div>
 
@@ -65,6 +72,7 @@
                 <button type="submit" class="btn btn-primary d-block ml-auto">Mentés</button>
             </div>
         </form>
+        {% if not user.is_teacher %}
         <div class="row">
             <div class="col-12">
                 <hr>
@@ -77,6 +85,7 @@
                 <a class="btn btn-primary" href="{% url 'start_teaching' %}">Tovább</a>
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

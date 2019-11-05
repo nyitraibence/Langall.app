@@ -7,24 +7,19 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Kezdj el tanítani!</h2><br><br>
+                <h2>Kezdj el tanítani!</h2><br>
                 <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Neque vero sit assumenda obcaecati iste,
                     excepturi distinctio ipsam alias dolor velit aperiam odio,
                     placeat repellendus reprehenderit eveniet mollitia nihil.
                     Tenetur, obcaecati?
-                </p>
-                <p class="text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Neque vero sit assumenda obcaecati iste,
-                    excepturi distinctio ipsam alias dolor velit aperiam odio,
-                    placeat repellendus reprehenderit eveniet mollitia nihil.
-                    Tenetur, obcaecati?
-                </p>
+                </p><br>
             </div>
         </div>
-        {% if user.is_authenticated %}
+
         <div class="row">
-            <div class="col-md-5 mx-auto">
+            <div class="col-md-5">
+                {% if user.is_authenticated %}
                 <h5>Egészítsd ki a profilod a tanítás részleteivel, és meg is vagy!</h5>
                 <p>
                     <form method="post">
@@ -37,10 +32,10 @@
                 <br><br>
                 <a class="btn btn--130 btn-primary float-right ml-2" href="{% url 'register' %}">Regisztráció</a>
                 <a class="btn btn--130 btn-secondary float-right" href="{% url 'login' %}">Belépés</a>
-
+                {% endif %}
             </div>
         </div>
-        {% endif %}
+
     </div>
 </section>
 {% endblock %}
