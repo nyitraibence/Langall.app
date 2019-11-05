@@ -12,18 +12,20 @@
         <div class="row text-center">
             <div class="col-md-8 mx-auto">
                 {% if user.is_authenticated %}
-                <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
-                <h3>Üdv {{ user.first_name }}!</h3>
+                <h3 class="welcome-type-1">Üdv {{ user.first_name }}!</h3>
+                <br>
+                <!-- <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a> -->
                 {% endif %}
                 <h1>Langall.app</h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Similique culpa nostrum, itaque optio vel praesentium autem.
-                    Hic asperiores maiores quod debitis consequuntur sunt modi,
-                    sequi odit commodi libero provident omnis.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio architecto omnis et atque sint quasi,
+                    vero eius minus excepturi, in, quae quaerat voluptatem ratione rem ducimus cupiditate impedit
+                    aliquam suscipit. impedit
+                    aliquam suscipit.
                 </p>
                 {% if user.is_teacher %}
-                <a class="btn btn-teacher btn--250 mt-2" href="{% url 'teacher_panel' %}">
+                <a class="btn btn-with-icon btn-teacher mt-2" href="{% url 'teacher_panel' %}">
+                    <img src="{% static 'img/book_icon.png' %}" alt="facebook Belépés">
                     Tanári felületem
                 </a>
                 {% else %}

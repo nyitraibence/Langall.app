@@ -17,7 +17,7 @@ def start_teaching(request):
             request.user.save()
 
             teacher_form = TeacherForm()
-            return render(request, 'app_teachers/start_teaching.html', {'form' : teacher_form})
+            return redirect('homepage')
     else:
         teacher_form = TeacherForm()
         return render(request, 'app_teachers/start_teaching.html', {'form' : teacher_form})

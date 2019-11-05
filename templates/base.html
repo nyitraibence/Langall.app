@@ -27,12 +27,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Főoldal</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'teachers' %}">Tanárok</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Rólunk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'exams' %}">Nyelvvizsga lehetőségek</a>
-                    </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil 👨‍🎤</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link nav-link-bordered" href="{% url 'login' %}">Login</a>
                     </li>
@@ -47,8 +45,44 @@
         {% block content %} {% endblock %}
     </main>
 
-    <footer class="bg-dark text-center">
-        <h2>footer</h2>
+    <footer class="bg-dark text-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{% url 'homepage' %}" class="d-flex align-items-start">
+                        <img src="{% static 'img/langall_logo_graphic@4x.png' %}" alt="" width="50px" class="mr-4">
+                        <h2>Langall</h2>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="{% url 'about' %}">Rólunk</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'exams' %}">Nyelvvizsga lehetőségek</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'contact' %}">Kapcsolat</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="#">langall.app@gmail.com</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#">+3 30 687 8966</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+
     </footer>
 
 
