@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TeacherProfile
+from .models import TeacherProfile, Lesson
 
 
 class TeacherProfileInline(admin.TabularInline):
@@ -7,3 +7,8 @@ class TeacherProfileInline(admin.TabularInline):
     can_delete = False
     verbose_name_plural = 'Teacher Profile'
 
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ['host_teacher', 'student',
+                    'language', 'is_verified']
+
+admin.site.register(Lesson, LessonAdmin)

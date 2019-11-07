@@ -1,16 +1,9 @@
 from django.db import models
 from django.conf import settings
 from cuser.models import AbstractCUser
+from .coreconfig import LANGUAGE
 
 
-LANGUAGE = [
-    ('ENG', 'English'),
-    ('SPA', 'Spanish'),
-    ('GER', 'German'),
-    ('FRA', 'French'),
-    ('ITA', 'Italian'),
-    ('RUS', 'Russian'),
-]
 
 
 class CustomUser(AbstractCUser):
