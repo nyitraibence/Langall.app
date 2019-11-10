@@ -7,6 +7,7 @@
 	.st1{fill:#FF5F67;}
 	.st2{fill:#FFFFFF;}
 	.st3{fill:none;stroke:#FFFFFF;stroke-width:30;stroke-linecap:round;}
+	.st4{fill:none;stroke:#FFFFFF;stroke-width:30;stroke-linecap:round;stroke-miterlimit:10;}
 </style>
 <g id="XMLID_1_">
 	<g>
@@ -16,11 +17,8 @@
 	</g>
 </g>
 <g>
-	<path class="st2" d="M454,46c0,18.5,0,210.5,0,250"/>
-	<path class="st3" d="M454,46c0,18.5,0,210.5,0,250"/>
+	<path class="st2" d="M454,49c0,20.7,0,235.8,0,280"/>
+	<path class="st3" d="M454,49c0,20.7,0,235.8,0,280"/>
 </g>
-<g>
-	<path class="st2" d="M454,359c0,3.7,0,42.1,0,50"/>
-	<path class="st3" d="M454,359c0,3.7,0,42.1,0,50"/>
-</g>
+<path class="st4" d="M453.7,409.4c-1.2,10.4-3.4,24.9-7.8,41.3c-1.8,6.9-3.7,12.9-5.5,18.1"/>
 </svg>
