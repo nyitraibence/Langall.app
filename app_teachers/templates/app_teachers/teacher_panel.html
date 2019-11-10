@@ -1,15 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Langall{% endblock %}
+{% block title %}Tanár felület{% endblock %}
 
 {% block content %}
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12 text-center">
                 <h2>Ez a saját tanár profilod!</h2>
                 <p>Állíts be mindent, hogy olyan órákat tarthass, olyan körülmények között,
                     amilyeneket csak szeretnél.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Naptár</h2>
+                <div class="panel-container b-rad-7 shadow-1 p-4">
+                    hello
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <h4>Következő tartandó órák:</h4>
+                {% for top in top_3 %}
+                <div class="p-3 b-rad-7 shadow-1">
+                    <span class="badge badge-teacher">New</span>
+                    <h5>{{ top.student.last_name }} {{ top.student.first_name }}, </h5>
+                    <strong>{{ top.language }}</strong><br>
+                    {{ top.start_time }}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
