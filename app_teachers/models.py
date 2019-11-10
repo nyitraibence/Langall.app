@@ -26,3 +26,4 @@ class Lesson(models.Model):
     location = models.CharField(blank=True, max_length=150)
     note = models.TextField(blank=True, max_length=400)
     is_verified = models.BooleanField(default=False)
+    is_over = models.BooleanField(default=False)
