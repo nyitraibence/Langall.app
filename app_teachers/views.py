@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from core.models import CustomUser
-from .models import TeacherProfile
+from .models import TeacherProfile, Lesson
 from social_django.models import UserSocialAuth
 from .forms import TeacherForm
 
@@ -26,7 +26,11 @@ def start_teaching(request):
 
 
 def teacher_panel(request):
-    return render(request, 'app_teachers/teacher_panel.html')
+    top_3_appointments = Lesson.objects.filter(host_teacher=request.user.id).order_by('start_time')[:3]
+    content = {
+        'top_3': top_3_appointments
+    }
+    return render(request, 'app_teachers/teacher_panel.html', content)
 
 
 
