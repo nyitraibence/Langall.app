@@ -110,4 +110,4 @@ def new_social(request):
 # ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
 
-    return render(request, 'my404.html')
+    return render(request, 'email/simple_mail_template.html')
