@@ -1,0 +1,81 @@
+.icon-anim-container-1 {
+    display inline-block
+    position relative
+    width 120px
+    height 120px
+}
+
+// TOUNGE ANIMATION -------------------------------------------
+.tounge--dropdown {
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 100%
+    // animation logo-drop-down-1 .3s ease-in
+}
+
+@keyframes logo-drop-down-1 {
+    from {
+        width 100%
+        height 0
+    }
+
+    to {
+        width 100%
+        height 100%
+    }
+}
+
+// FLY ANIMATION -------------------------------------------
+.fly--spinner {
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 100%
+    animation fly-spinner 1.2s linear infinite, fly-arc .8s linear infinite
+}
+
+.fly--spinner-2 {
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 100%
+    animation fly-spinner-2 1.2s linear infinite, fly-arc .7s linear infinite
+}
+
+@keyframes fly-spinner {
+    0% {
+        transform rotate(0)
+    }
+
+    100% {
+        transform rotate(-360deg)
+    }
+}
+
+@keyframes fly-spinner-2 {
+    0% {
+        transform rotate(0)
+    }
+
+    100% {
+        transform rotate(360deg)
+    }
+}
+
+@keyframes fly-arc {
+    0% {
+        width 100%
+    }
+
+    60% {
+        width 60%
+    }
+
+    100% {
+        width 100%
+    }
+}

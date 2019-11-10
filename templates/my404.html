@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Langall{% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="giant-type-1">404 :(</h1>
+                <h3>A kért oldal sajnos nem elérhető!</h3>
+                <div class="icon-anim-container-1">
+                    <img src="{% static 'img/icon_graphic_green.svg' %}" alt="Langall 404" class="tounge--dropdown">
+                    <img src="{% static 'img/fly.svg' %}" alt="Langall 404" class="fly--spinner">
+                    <img src="{% static 'img/fly.svg' %}" alt="Langall 404" class="fly--spinner-2">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
