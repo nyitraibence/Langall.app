@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from app_teachers.models import Lesson
 # for email sending feature
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate
@@ -18,7 +19,14 @@ from .signals import new_user_activation
 def homepage(request):
     user_count = get_user_model().objects.all().count()
     teacher_count = get_user_model().objects.filter(is_teacher='True').count()
-    return render(request, 'homepage.html',{'num_users' : user_count, 'num_teachers' : teacher_count})
+    lesson_count = Lesson.objects.order_by('-id')[0]
+    # DO UPDATE: only count lessons that are over
+    content = {
+        'num_users' : user_count,
+        'num_teachers' : teacher_count,
+        'num_lessons': lesson_count
+    }
+    return render(request, 'homepage.html', content)
 
 def profile(request):
     if request.user.is_authenticated:
@@ -110,4 +118,4 @@ def new_social(request):
 # ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
 
-    return render(request, 'email/simple_mail_template.html')
+    return render(request, 'my404.html')
