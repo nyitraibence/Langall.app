@@ -109,10 +109,5 @@ def new_social(request):
 
 # ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
-    person = request.user
-    persons_facebook = person.social_auth.get(provider="facebook")
-    profile_name = persons_facebook.extra_data['name']
-    profile_url = persons_facebook.extra_data['profile_url']
-    profile_pic_url = persons_facebook.extra_data['picture']['data']['url']
 
-    return render(request, 'new_social_user.html', {'prifile_name':profile_name, 'profile_url':profile_url, 'profile_pic_url':profile_pic_url})
+    return render(request, 'my404.html')

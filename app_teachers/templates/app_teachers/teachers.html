@@ -11,28 +11,24 @@
 
             {% for teacher in teachers %}
             <div class="col-md-4">
-                <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
-                <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
-                <p>{{ teacher.city }}, {{ teacher.location }}</p>
-                <p>{{ass.extra_data.picture.data.url}}</p>
-                <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
-                    {{ teacher.teacherprofile.teach_lang_3 }}</h5>
-                {% if user.is_authenticated %}
-                <a href="#">
-                    <img src="{% static 'img/bookmark.svg' %}" alt="tanár könyvjelző" height="30px">
-                </a>
-                {% endif %}
-                <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
-                <p>5.0 <small>(14 értékelés)</small></p>
-                <span>⭐⭐⭐⭐⭐</span>
-                {% if user.is_authenticated %}
-                <p>📞 +36 30 3546993</p>
-                <p>📩 {{teacher.email}}</p>
-                {% else %}
-                <p>📞 +36...</p>
-                <p>📩 ...</p>
-                {% endif %}
-                <p>{{ teacher.teacherprofile.introduction }}</p>
+                <div class="teacher-card shadow-1" data-aos="fade-up">
+                    <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
+                    <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                    <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
+                    <p>{{ass.extra_data.picture.data.url}}</p>
+                    <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                        {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                    <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                    <p>5.0 <small>(14 értékelés)</small></p>
+                    {% if user.is_authenticated %}
+                    <p>📞 +36 30 3546993</p>
+                    <p>📩 {{teacher.email}}</p>
+                    {% else %}
+                    <p>📞 +36...</p>
+                    <p>📩 ...</p>
+                    {% endif %}
+                    <p>{{ teacher.teacherprofile.introduction }}</p>
+                </div>
             </div>
             {% endfor %}
 

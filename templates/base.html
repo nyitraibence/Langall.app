@@ -9,6 +9,7 @@
     <title>{% block title %}Langall app{% endblock %}</title>
     <link rel="icon" type="image/png" href="{% static 'img/icon_100.png' %}" />
 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="{% static 'css/vendor.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
 </head>
@@ -49,10 +50,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="{% url 'homepage' %}" class="d-flex align-items-start">
-                        <img src="{% static 'img/langall_logo_graphic@4x.png' %}" alt="" width="50px" class="mr-4">
-                        <h2>Langall</h2>
-                    </a>
+                    <div class="d-flex align-items-start">
+                        <a href="{% url 'homepage' %}">
+                            <img src="{% static 'img/icon_graphic.svg' %}" alt="" width="50px" class="mr-4">
+                        </a>
+                        <a href="{% url 'homepage' %}">
+                            <h2>Langall</h2>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <ul>
@@ -78,15 +83,12 @@
                     </ul>
                 </div>
             </div>
-
-
         </div>
-
-
     </footer>
 
 
     {% block extra_scripts %} {% endblock %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="{% static 'js/vendor.min.js' %}"></script>
     <script src="{% static 'js/main.min.js' %}"></script>
 

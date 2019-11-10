@@ -62,5 +62,8 @@
     "android >= 4.4",
     "bb >= 10",
     "maintained node versions"
-  ]
+  ],
+  "dependencies": {
+    "aos": "^2.3.4"
+  }
 }
