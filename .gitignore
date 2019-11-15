@@ -1,3 +1,5 @@
 template_workflow/node_modules
 .env
 ~$docu.docx
+*.pyc
+*.pyc
