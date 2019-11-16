@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Langall{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>{{lesson.language}}</h2>
+            <a href="{% url 'teacher_panel' %}">Vissza a tanár felületre</a>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-10">
+                {{lesson.id}}<br>
+                {{lesson.student.last_name}} {{lesson.student.first_name}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

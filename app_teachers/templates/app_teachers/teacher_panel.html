@@ -29,19 +29,44 @@
         </div>
         <div class="row">
             <div class="col-md-4">
+
+
+                <!-- UPCOMING START -->
                 {% if top_3 %}
-                <h4>Következő tartandó órák:</h4>
+                <h4 class="mt-5">Következő tartandó órák:</h4>
                 {% for top in top_3 %}
                 <div class="p-3 mb-3 b-rad-7 shadow-1">
-                    <span class="badge badge-secondary">Elfogadott</span>
+                    <a class="badge badge-secondary" href="{% url 'single_lesson' top.id %}">Óra info</a>
+                    <span class="badge badge-light-grey">Elfogadott</span>
                     <h5>{{ top.student.last_name }} {{ top.student.first_name }}, </h5>
                     <strong>{{ top.language }}</strong><br>
-                    {{ top.start_time }}
+                    <p>{{ top.start_time }}</p>
+
                 </div>
                 {% endfor %}
                 {% else %}
-                <h4 class="font-grey">Nincsenek még betervezett óráid ...</h4>
+                <h4 class="font-grey">Nincsenek még betervezett óráid</h4>
                 {% endif %}
+                <!-- UPCOMING END -->
+
+
+                <!-- PASSED START -->
+                {% if past_3 %}
+                <h4 class="mt-5">Elmúlt óráid:</h4>
+                {% for past in past_3 %}
+                <div class="p-3 mb-3 b-rad-7 shadow-1">
+                    <a class="badge badge-secondary" href="{% url 'single_lesson' past.id %}">Óra info</a>
+                    <span class="badge badge-danger">Vége</span>
+                    <h5>{{ past.student.last_name }} {{ past.student.first_name }}, </h5>
+                    <strong>{{ past.language }}</strong><br>
+                    <p>{{ past.start_time }}</p>
+
+                </div>
+                {% endfor %}
+                {% else %}
+                <h4 class="font-grey">Nincsenek még befejezett óráid</h4>
+                {% endif %}
+                <!-- PASSED END -->
 
             </div>
             <div class="col-md-8">
@@ -51,6 +76,9 @@
                         yaa
                     </div>
                 </div>
+
+                <!-- PENDING START -->
+                {% if new_requests %}
                 <h2 class="mt-5">Elfogadásra váró felkeresések</h2>
                 {% for new in new_requests %}
                 <div class="row shadow-1 b-rad-7 mb-3">
@@ -68,6 +96,10 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <h2 class="mt-5 font-grey">Most nincs új felkérésed</h2>
+                {% endif %}
+                <!-- PENDING END -->
             </div>
         </div>
     </div>

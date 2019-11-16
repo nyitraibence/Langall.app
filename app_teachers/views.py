@@ -25,11 +25,14 @@ def start_teaching(request):
 
 
 def teacher_panel(request):
-    top_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=True).order_by('start_time')[:3]
+    top_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=True, is_over=False).order_by('start_time')[:3]
     unverified_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False).order_by('start_time')
+    passed_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_over=True).order_by('-start_time')[:3]
+    
     content = {
         'top_3': top_3_appointments,
-        'new_requests': unverified_appointments
+        'new_requests': unverified_appointments,
+        'past_3': passed_3_appointments
     }
     return render(request, 'app_teachers/teacher_panel.html', content)
 
@@ -43,5 +46,9 @@ def teachers(request):
 
 def single_teacher(request, pk):
     the_teacher = CustomUser.objects.get(id = pk)
-    print(type(the_teacher))
     return render(request, 'app_teachers/single_teacher.html', {'teacher' : the_teacher})
+
+
+def single_lesson(request, pk):
+    the_lesson = Lesson.objects.get(id = pk)
+    return render(request, 'app_teachers/single_lesson.html', {'lesson' : the_lesson})

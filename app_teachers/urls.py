@@ -7,4 +7,5 @@ urlpatterns = [
     path('my_panel/', views.teacher_panel, name="teacher_panel"),
     path('start/', views.start_teaching, name="start_teaching"),
     path('single_teacher/<int:pk>/', views.single_teacher, name="single_teacher"),
+    path('single_lesson/<int:pk>/', views.single_lesson, name="single_lesson"),
 ]

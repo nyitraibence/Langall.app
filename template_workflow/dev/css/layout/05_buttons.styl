@@ -128,13 +128,16 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 }
 
 // BUTTON COLORS ---------------------------------------------
+.btn {
+	&:hover {
+		color $white
+		filter brightness(108%)
+	}
+}
+
 .btn-cold {
 	color $white
 	background $cold
-
-	&:hover {
-		color $white
-	}
 }
 
 .btn-with-icon {
@@ -178,12 +181,6 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 .btn-contact {
 	color $white
 	background $tertiary
-
-	// background #FFa600
-	&:hover {
-		color $white
-		filter brightness(108%)
-	}
 }
 
 .btn-teacher {
@@ -191,19 +188,25 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	max-width 270px
 	color $white
 	background $teacher-color
-
-	&:hover {
-		color $white
-		filter brightness(108%)
-	}
 }
 
-.badge-teacher {
+.btn-grey {
 	color $white
-	background $palette-1
+	background $grey
 }
 
 .btn-ok {
 	color $white
 	background $palette-1
+}
+
+// BADGES
+.badge-teacher {
+	color $white
+	background $palette-1
+}
+
+.badge-light-grey {
+	color $white
+	background $light-grey
 }
