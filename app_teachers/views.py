@@ -24,7 +24,6 @@ def start_teaching(request):
 
 
 
-
 def teacher_panel(request):
     top_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=True).order_by('start_time')[:3]
     unverified_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False).order_by('start_time')
