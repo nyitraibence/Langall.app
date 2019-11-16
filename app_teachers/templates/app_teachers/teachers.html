@@ -11,7 +11,7 @@
 
             {% for teacher in teachers %}
             <div class="col-md-4">
-                <div class="teacher-card shadow-1" data-aos="fade-up">
+                <div class="teacher-card shadow-1">
                     <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
                     <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
                     <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
@@ -28,6 +28,9 @@
                     <p>📩 ...</p>
                     {% endif %}
                     <p>{{ teacher.teacherprofile.introduction }}</p>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn--130 btn-primary" href="{% url 'single_teacher' teacher.id %}">felkeresés</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

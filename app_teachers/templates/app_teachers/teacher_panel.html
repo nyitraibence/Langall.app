@@ -12,22 +12,60 @@
                     amilyeneket csak szeretnél.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Naptár</h2>
-                <div class="panel-container b-rad-7 shadow-1 p-4">
-                    hello
-                </div>
-
+        <div class="row mb-5">
+            <div class="col-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Értesítések</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Órarend</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tanár adatok</a>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
+                {% if top_3 %}
                 <h4>Következő tartandó órák:</h4>
                 {% for top in top_3 %}
-                <div class="p-3 b-rad-7 shadow-1">
-                    <span class="badge badge-teacher">New</span>
+                <div class="p-3 mb-3 b-rad-7 shadow-1">
+                    <span class="badge badge-secondary">Elfogadott</span>
                     <h5>{{ top.student.last_name }} {{ top.student.first_name }}, </h5>
                     <strong>{{ top.language }}</strong><br>
                     {{ top.start_time }}
+                </div>
+                {% endfor %}
+                {% else %}
+                <h4 class="font-grey">Nincsenek még betervezett óráid ...</h4>
+                {% endif %}
+
+            </div>
+            <div class="col-md-8">
+                <h2 class="mt-5">Órarend</h2>
+                <div class="row">
+                    <div class="col-12 b-rad-7 shadow-1 p-4">
+                        yaa
+                    </div>
+                </div>
+                <h2 class="mt-5">Elfogadásra váró felkeresések</h2>
+                {% for new in new_requests %}
+                <div class="row shadow-1 b-rad-7 mb-3">
+                    <div class="col-sm-6">
+                        <div class="p-3">
+                            <span class="badge badge-teacher">Új!</span>
+                            <h5>{{ new.student.last_name }} {{ new.student.first_name }}, </h5>
+                            <strong>{{ new.language }}</strong><br>
+                            {{ new.start_time }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 d-flex justify-content-center align-items-center">
+                        <a class="btn btn--130 btn-contact mr-2" href="{% url 'homepage' %}">Visszautasítás</a>
+                        <a class="btn btn--130 btn-ok" href="{% url 'homepage' %}">Elfogadás</a>
+                    </div>
                 </div>
                 {% endfor %}
             </div>

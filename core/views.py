@@ -19,8 +19,7 @@ from .signals import new_user_activation
 def homepage(request):
     user_count = get_user_model().objects.all().count()
     teacher_count = get_user_model().objects.filter(is_teacher='True').count()
-    lesson_count = Lesson.objects.order_by('-id')[0]
-    # DO UPDATE: only count lessons that are over
+    lesson_count = Lesson.objects.filter(is_verified=True).order_by('-id')[0]
     content = {
         'num_users' : user_count,
         'num_teachers' : teacher_count,

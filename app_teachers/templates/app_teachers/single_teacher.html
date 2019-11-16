@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Langall{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>{{teacher.last_name}} {{teacher.first_name}}</h2>
+            <a href="{% url 'teachers' %}">Vissza az összes tanárhoz</a>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-10">
+
+                <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
+                <p>{{ass.extra_data.picture.data.url}}</p>
+                <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                    {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                <p>5.0 <small>(14 értékelés)</small></p>
+                {% if user.is_authenticated %}
+                <p>📞 +36 30 3546993</p>
+                <p>📩 {{teacher.email}}</p>
+                {% else %}
+                <p>📞 +36...</p>
+                <p>📩 ...</p>
+                {% endif %}
+                <p>{{ teacher.teacherprofile.introduction }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
