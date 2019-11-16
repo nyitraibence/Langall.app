@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('test/', views.tester, name='test'),
     path('s/', include('app_static_pages.urls')),
-    path('teaching/', include('app_teachers.urls')),
+    path('t/', include('app_teachers.urls')),
     path('profile/', views.profile, name='profile'),
     path('new_social/', views.new_social, name='new_social'),
     path('social-auth/', include('social_django.urls', namespace="social")),
