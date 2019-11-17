@@ -10,6 +10,7 @@
                 <h2>Ez a saját tanár profilod!</h2>
                 <p>Állíts be mindent, hogy olyan órákat tarthass, olyan körülmények között,
                     amilyeneket csak szeretnél.</p>
+                <a href="{% url 'teacher_panel' %}" data-aos="fade-in" data-aos-delay="1000">&#x21bb; frissítés</a>
             </div>
         </div>
         <div class="row mb-5">
@@ -91,15 +92,18 @@
                         </div>
                     </div>
                     <div class="col-sm-6 d-flex justify-content-center align-items-center">
-                        <button class="btn btn--130 btn-contact mr-2 js-pending-lesson-not-ok"
-                            data-l-id="{{ new.id }}">Visszautasítás</button>
+                        <button class="btn btn--130 btn-contact mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
+                            data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
                         <button class="btn btn--130 btn-ok js-pending-lesson-ok" data-l-id="{{ new.id }}"
                             data-ajax-url="{% url 'accept_lesson' %}">Elfogadás</button>
                     </div>
                 </div>
                 {% endfor %}
                 {% else %}
-                <h2 class="mt-5 font-grey">Most nincs új felkérésed</h2>
+                <div class="text-center">
+                    <h2 class="mt-5 font-grey">Most nincs új felkérésed</h2>
+                    <a href="{% url 'teacher_panel' %}" data-aos="fade-in" data-aos-delay="1000">&#x21bb; frissítés</a>
+                </div>
                 {% endif %}
                 <!-- PENDING END -->
             </div>

@@ -13,4 +13,13 @@ def accept_lesson(request):
     data = {'message' : "Elfogadva!"}
     return JsonResponse(data)
 
-    
+def reject_lesson(request):
+    lesson_id = request.GET.get('lesson_id', None)
+    print('============================================')
+    print(lesson_id)
+    print('============================================')
+    actual_lesson = Lesson.objects.get(pk=lesson_id)
+    actual_lesson.is_rejected = True
+    actual_lesson.save()
+    data = {'message' : "Tanóra elutasítva!"}
+    return JsonResponse(data)

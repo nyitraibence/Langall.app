@@ -11,4 +11,5 @@ urlpatterns = [
 
     # ones for ajax:
     path('ajax/accept_lesson/', views_ajax.accept_lesson, name="accept_lesson"),
+    path('ajax/reject_lesson/', views_ajax.reject_lesson, name="reject_lesson"),
 ]
