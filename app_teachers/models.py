@@ -2,6 +2,7 @@ from django.db import models
 from core.models import CustomUser
 from django.conf import settings
 from core.coreconfig import LANGUAGE
+from django.utils import timezone
 
 
 class TeacherProfile(models.Model):
@@ -21,6 +22,7 @@ class TeacherProfile(models.Model):
 class Lesson(models.Model):
     host_teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='host_teacher')
     student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='student')
+    created = models.DateTimeField(default=timezone.now)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     language = models.CharField(blank=True, max_length=3, choices=LANGUAGE)
