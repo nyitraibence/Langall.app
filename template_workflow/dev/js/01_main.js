@@ -1,6 +1,7 @@
 (function ($) {
     $(() => {
         console.log('Hello Django user!');
+        $('[data-toggle="tooltip"]').tooltip()
     });
 })(jQuery);
 

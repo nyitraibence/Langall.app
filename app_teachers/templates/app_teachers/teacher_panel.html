@@ -37,11 +37,20 @@
                 <h4 class="mt-5">Következő tartandó órák:</h4>
                 {% for top in top_3 %}
                 <div class="p-3 mb-3 b-rad-7 shadow-1">
-                    <a class="badge badge-secondary" href="{% url 'single_lesson' top.id %}">Óra info</a>
-                    <span class="badge badge-light-grey">Elfogadott</span>
+                    <a class="badge badge-secondary" href="{% url 'single_lesson' top.id %}">Szerkesztés</a>
+                    <span class="badge badge-light-grey">Elfogadva</span>
+                    {% if top.note %}
+                    <span class="badge badge-warning" data-toggle="tooltip" data-placement="bottom"
+                        title="{{top.note}}">Note</span>
+                    {% endif %}
+                    {% if top.location %}
+                    <span class="badge badge-cold" data-toggle="tooltip" data-placement="bottom"
+                        title="{{top.location}}">helyszín</span>
+                    {% endif %}
                     <h5>{{ top.student.last_name }} {{ top.student.first_name }}, </h5>
                     <strong>{{ top.language }}</strong><br>
-                    <p>{{ top.start_time }}</p>
+                    <p class="font-grey"><small><strong>{{ top.start_time|date:"l" }} - </strong>
+                            {{ top.start_time|date:'Y, M, j' }}</small></p>
 
                 </div>
                 {% endfor %}
@@ -56,7 +65,7 @@
                 <h4 class="mt-5">Elmúlt óráid:</h4>
                 {% for past in past_3 %}
                 <div class="p-3 mb-3 b-rad-7 shadow-1">
-                    <a class="badge badge-secondary" href="{% url 'single_lesson' past.id %}">Óra info</a>
+                    <a class="badge badge-secondary" href="{% url 'single_lesson' past.id %}">Részletek</a>
                     <span class="badge badge-danger">Vége</span>
                     <h5>{{ past.student.last_name }} {{ past.student.first_name }}, </h5>
                     <strong>{{ past.language }}</strong><br>
@@ -86,6 +95,10 @@
                     <div class="col-sm-6">
                         <div class="p-3">
                             <span class="badge badge-teacher">Új!</span>
+                            {% if new.note %}
+                            <span class="badge badge-warning" data-toggle="tooltip" data-placement="bottom"
+                                title="{{new.note}}">Note</span>
+                            {% endif %}
                             <h5>{{ new.student.last_name }} {{ new.student.first_name }}, </h5>
                             <strong>{{ new.language }}</strong><br>
                             {{ new.start_time }}
