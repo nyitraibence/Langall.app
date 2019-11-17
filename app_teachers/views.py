@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from core.models import CustomUser
 from .models import TeacherProfile, Lesson
 from social_django.models import UserSocialAuth
-from .forms import TeacherForm
+from .forms import TeacherForm, PingTeacherForm
 
 
 def start_teaching(request):
@@ -39,14 +39,19 @@ def teacher_panel(request):
 
 
 def teachers(request):
-    teachers = CustomUser.objects.filter(is_teacher=True)
+    teachers = CustomUser.objects.filter(is_teacher=True).order_by('-teacherprofile__form_fill_factor')
     return render(request, 'app_teachers/teachers.html', {'teachers' : teachers})
 
 
 
 def single_teacher(request, pk):
     the_teacher = CustomUser.objects.get(id = pk)
-    return render(request, 'app_teachers/single_teacher.html', {'teacher' : the_teacher})
+    ping_form = PingTeacherForm()
+    content = {
+        'teacher' : the_teacher,
+        'form' : ping_form
+    }
+    return render(request, 'app_teachers/single_teacher.html', content)
 
 
 def single_lesson(request, pk):

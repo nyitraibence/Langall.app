@@ -15,7 +15,6 @@ class CustomUser(AbstractCUser):
         blank=True, max_length=3, choices=LANGUAGE)
     interest_lang_3 = models.CharField(
         blank=True, max_length=3, choices=LANGUAGE)
-    form_fill_factor = models.FloatField(blank=True, default=1, max_length=4)
     is_phone_verified = models.BooleanField(default=False)
     is_premium = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)

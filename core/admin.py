@@ -18,7 +18,7 @@ class CustomUserAdmin(admin.ModelAdmin):
             'fields': ('email', 'password')
         }),
         ('Profile', {
-            'fields': ('first_name', 'last_name', 'city', 'location', 'form_fill_factor', 'interest_lang_1', 'interest_lang_2', 'interest_lang_3', 'is_phone_verified', 'is_teacher', 'is_premium'),
+            'fields': ('first_name', 'last_name', 'city', 'location', 'interest_lang_1', 'interest_lang_2', 'interest_lang_3', 'is_phone_verified', 'is_teacher', 'is_premium'),
         }),
     )
 

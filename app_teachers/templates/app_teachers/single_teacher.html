@@ -11,8 +11,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-10">
-
+            <div class="col-md-6">
                 <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
                 <p>{{ass.extra_data.picture.data.url}}</p>
                 <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
@@ -27,6 +26,46 @@
                 <p>📩 ...</p>
                 {% endif %}
                 <p>{{ teacher.teacherprofile.introduction }}</p>
+            </div>
+            <div class="col-md-6">
+                <h2 class="shadow-1 b-rad-7 p-3">Órarend</h2>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h4>írj neki emailt!</h4>
+                <p>
+                    Ha hosszabban kifejtenéd neki a mondandód, akkor írd meg ide, mi elküldjük neki
+                    email-ben, és értesítünk ha reagált!
+                </p>
+                <p>
+                    <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
+                        &#x27a4; &#x27a4; &#x27a4;
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <p>
+                            <h5>Levélírás ide</h5>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore culpa quam incidunt
+                            tenetur, temporibus similique adipisci molestiae magnam autem ratione voluptatem quis
+                            possimus iure, vitae ea. Placeat molestias sequi ad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Pingeld meg a tanárod!</h2>
+                <p>Küldj egy villám üzenetet a tanárnak hogy jó e neki az óra. Jelölj ki egy órarendi cellát ami
+                    megfelelne, és kattints a Ping-re. Küldhetsz üzenetet is. Egyből értesítést kap róla, és tud
+                    reagálni rá. Ha jóváhagyja,
+                    már tiéd is az időpont!</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn--130 btn-primary">Ping!</button>
+                </form>
             </div>
         </div>
     </div>
