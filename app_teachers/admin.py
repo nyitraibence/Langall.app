@@ -9,6 +9,6 @@ class TeacherProfileInline(admin.TabularInline):
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['host_teacher', 'student',
-                    'language', 'is_verified']
+                    'language', 'is_verified', 'is_rejected']
 
 admin.site.register(Lesson, LessonAdmin)

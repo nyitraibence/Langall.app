@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from core.models import CustomUser
 from .models import TeacherProfile, Lesson
 from social_django.models import UserSocialAuth

@@ -25,5 +25,7 @@ class Lesson(models.Model):
     language = models.CharField(blank=True, max_length=3, choices=LANGUAGE)
     location = models.CharField(blank=True, max_length=150)
     note = models.TextField(blank=True, max_length=400)
+    reject_message = models.TextField(blank=True, max_length=400)
     is_verified = models.BooleanField(default=False)
+    is_rejected = models.BooleanField(default=False)
     is_over = models.BooleanField(default=False)
