@@ -6,14 +6,15 @@
             console.log("selected lesson id:" + accepted_lesson_id);
             console.log("called ajax url:" + ajax_url);
 
+            $('.js-new-lesson-options-' + accepted_lesson_id).html("");
+
             $.ajax({
                 url: ajax_url,
                 type: "GET",
                 data: { lesson_id: accepted_lesson_id },
                 dataType: 'json',
                 success: function (json) {
-                    $("[data-l-id=" + accepted_lesson_id + "]").css('background', '#000000');
-                    console.log("successfully retrieved ajax response from server");
+                    $('.js-new-lesson-options-' + accepted_lesson_id).html('<h5 class="font-ok">Elfogadva</h5>');
                 },
 
                 // handle a non-successful response
@@ -29,14 +30,15 @@
             console.log("selected lesson id:" + rejected_lesson_id);
             console.log("called ajax url:" + ajax_url);
 
+            $('.js-new-lesson-options-' + rejected_lesson_id).html("");
+
             $.ajax({
                 url: ajax_url,
                 type: "GET",
                 data: { lesson_id: rejected_lesson_id },
                 dataType: 'json',
                 success: function (json) {
-                    $("[data-l-id=" + rejected_lesson_id + "]").css('background', '#000000');
-                    console.log("successfully retrieved ajax response from server");
+                    $('.js-new-lesson-options-' + rejected_lesson_id).html('<h5 class="font-primary">Visszautasítva</h5>');
                 },
 
                 // handle a non-successful response

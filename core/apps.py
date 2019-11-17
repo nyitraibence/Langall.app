@@ -16,6 +16,6 @@ class CoreConfig(AppConfig):
         from django.db.models.signals import post_save
 
         # schedulers
-        from scheduler import scheduler_hq
-        scheduler_hq.main_schedule_controller()
+        # from scheduler import scheduler_hq
+        # scheduler_hq.main_schedule_controller()
         

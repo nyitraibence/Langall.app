@@ -12,8 +12,22 @@
         <hr>
         <div class="row">
             <div class="col-10">
-                {{lesson.id}}<br>
-                {{lesson.student.last_name}} {{lesson.student.first_name}}
+                <p><strong>Tanóra azonosító: </strong>{{lesson.id}}</p>
+                <p><strong>Ki tartja: </strong>{{lesson.host_teacher.last_name}} {{lesson.host_teacher.first_name}}</p>
+                <p><strong>Diák: </strong>{{lesson.student.last_name}} {{lesson.student.first_name}}</p>
+                <p><strong>Helyszín: </strong>{{lesson.location}}</p>
+                <p><strong>Megjegyzés: </strong>{{lesson.note}}</p>
+                <p><strong>Státusz: </strong>
+                    {% if lesson.is_over %}
+                    <span class="badge badge-danger">vége</span>
+                    {% else %}
+                    {% if lesson.is_verified %}
+                    <span class="badge badge-teacher">jóváhagyva</span>
+                    {% else %}
+                    <span class="badge badge-warning">függőben</span>
+                    {% endif %}
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>

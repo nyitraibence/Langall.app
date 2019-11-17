@@ -69,7 +69,7 @@
                     <span class="badge badge-danger">Vége</span>
                     {% if past.location %}
                     <span class="badge badge-cold" data-toggle="tooltip" data-placement="bottom"
-                        title="{{top.location}}">helyszín</span>
+                        title="{{past.location}}">helyszín</span>
                     {% endif %}
                     <h5>{{ past.student.last_name }} {{ past.student.first_name }}, </h5>
                     <strong>{{ past.language }}</strong><br>
@@ -104,7 +104,7 @@
                             {% if new.is_over %}
                             <span class="badge badge-problem">Elmúlasztott</span>
                             {% else %}
-                            <span class="badge badge-teacher">Új!</span>
+                            <span class="badge badge-warning">Új!</span>
                             {% endif %}
                             {% if new.note %}
                             <span class="badge badge-deep" data-toggle="tooltip" data-placement="bottom"
@@ -120,19 +120,18 @@
                                     {{ new.start_time|date:'Y, M, j' }}</small></p>
                         </div>
                     </div>
-                    {% if new.is_over %}
-                    <div class="col-sm-6 d-flex justify-content-center align-items-center">
+                    <div
+                        class="col-sm-6 d-flex justify-content-center align-items-center js-new-lesson-options-{{ new.id }}">
+                        {% if new.is_over %}
                         <button class="btn btn--130 btn-primary mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
-                            data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
-                    </div>
-                    {% else %}
-                    <div class="col-sm-6 d-flex justify-content-center align-items-center">
+                            data-ajax-url="{% url 'reject_lesson' %}">Már lejárt</button>
+                        {% else %}
                         <button class="btn btn--130 btn-contact mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
                             data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
                         <button class="btn btn--130 btn-ok js-pending-lesson-ok" data-l-id="{{ new.id }}"
                             data-ajax-url="{% url 'accept_lesson' %}">Elfogadás</button>
+                        {% endif %}
                     </div>
-                    {% endif %}
                 </div>
                 {% endfor %}
                 {% else %}
