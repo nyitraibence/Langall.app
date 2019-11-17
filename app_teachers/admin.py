@@ -8,7 +8,7 @@ class TeacherProfileInline(admin.TabularInline):
     verbose_name_plural = 'Teacher Profile'
 
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ['host_teacher', 'student',
-                    'language', 'is_verified', 'is_rejected']
+    list_display = ['id', 'host_teacher', 'student',
+                    'language', 'is_verified', 'is_rejected', 'is_over']
 
 admin.site.register(Lesson, LessonAdmin)

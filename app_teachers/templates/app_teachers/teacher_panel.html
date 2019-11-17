@@ -40,7 +40,7 @@
                     <a class="badge badge-secondary" href="{% url 'single_lesson' top.id %}">Szerkesztés</a>
                     <span class="badge badge-light-grey">Elfogadva</span>
                     {% if top.note %}
-                    <span class="badge badge-warning" data-toggle="tooltip" data-placement="bottom"
+                    <span class="badge badge-deep" data-toggle="tooltip" data-placement="bottom"
                         title="{{top.note}}">Note</span>
                     {% endif %}
                     {% if top.location %}
@@ -67,9 +67,14 @@
                 <div class="p-3 mb-3 b-rad-7 shadow-1">
                     <a class="badge badge-secondary" href="{% url 'single_lesson' past.id %}">Részletek</a>
                     <span class="badge badge-danger">Vége</span>
+                    {% if past.location %}
+                    <span class="badge badge-cold" data-toggle="tooltip" data-placement="bottom"
+                        title="{{top.location}}">helyszín</span>
+                    {% endif %}
                     <h5>{{ past.student.last_name }} {{ past.student.first_name }}, </h5>
                     <strong>{{ past.language }}</strong><br>
-                    <p>{{ past.start_time }}</p>
+                    <p class="font-grey"><small><strong>{{ past.start_time|date:"l" }} - </strong>
+                            {{ past.start_time|date:'Y, M, j' }}</small></p>
 
                 </div>
                 {% endfor %}
@@ -95,22 +100,39 @@
                 <div class="row shadow-1 b-rad-7 mb-3">
                     <div class="col-sm-6">
                         <div class="p-3">
+                            <a class="badge badge-secondary" href="{% url 'single_lesson' new.id %}">Részletek</a>
+                            {% if new.is_over %}
+                            <span class="badge badge-problem">Elmúlasztott</span>
+                            {% else %}
                             <span class="badge badge-teacher">Új!</span>
+                            {% endif %}
                             {% if new.note %}
-                            <span class="badge badge-warning" data-toggle="tooltip" data-placement="bottom"
+                            <span class="badge badge-deep" data-toggle="tooltip" data-placement="bottom"
                                 title="{{new.note}}">Note</span>
+                            {% endif %}
+                            {% if new.location %}
+                            <span class="badge badge-cold" data-toggle="tooltip" data-placement="bottom"
+                                title="{{new.location}}">helyszín</span>
                             {% endif %}
                             <h5>{{ new.student.last_name }} {{ new.student.first_name }}, </h5>
                             <strong>{{ new.language }}</strong><br>
-                            {{ new.start_time }}
+                            <p class="font-grey"><small><strong>{{ new.start_time|date:"l" }} - </strong>
+                                    {{ new.start_time|date:'Y, M, j' }}</small></p>
                         </div>
                     </div>
+                    {% if new.is_over %}
+                    <div class="col-sm-6 d-flex justify-content-center align-items-center">
+                        <button class="btn btn--130 btn-primary mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
+                            data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
+                    </div>
+                    {% else %}
                     <div class="col-sm-6 d-flex justify-content-center align-items-center">
                         <button class="btn btn--130 btn-contact mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
                             data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
                         <button class="btn btn--130 btn-ok js-pending-lesson-ok" data-l-id="{{ new.id }}"
                             data-ajax-url="{% url 'accept_lesson' %}">Elfogadás</button>
                     </div>
+                    {% endif %}
                 </div>
                 {% endfor %}
                 {% else %}
