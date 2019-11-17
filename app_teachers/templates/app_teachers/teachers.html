@@ -5,12 +5,14 @@
 {% block content %}
 <section>
     <div class="container">
-        <h2>Válassz tanárt magadnak!</h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Válassz tanárt magadnak!</h2>
+            <a href=" {% url 'homepage' %}">&#x21e0; vissza a főoldalra</a>
+        </div>
         <hr>
         <div class="row">
 
-            {% for teacher in teachers %}
-            <div class="col-md-4">
+            {% for teacher in teachers %} <div class=" col-md-4">
                 <div class="teacher-card shadow-1">
                     <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
                     <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
@@ -21,10 +23,10 @@
                     <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
                     <p>5.0 <small>(14 értékelés)</small></p>
                     {% if user.is_authenticated %}
-                    <p>📞 +36 30 3546993</p>
+                    <p>&#x260e; +36 30 3546993</p>
                     <p>📩 {{teacher.email}}</p>
                     {% else %}
-                    <p>📞 +36...</p>
+                    <p>&#x260e; +36...</p>
                     <p>📩 ...</p>
                     {% endif %}
                     <p>{{ teacher.teacherprofile.introduction }}</p>

@@ -28,6 +28,9 @@
                     <img src="{% static 'img/book_icon.png' %}" alt="facebook Belépés">
                     Tanári felületem
                 </a>
+                {% if notifications != 0 %}
+                <span class="badge badge-danger">{{notifications}}</span>
+                {% endif %}
                 {% else %}
                 <a class="btn btn--130 btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
                 <a class="btn btn--130 btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
@@ -99,15 +102,15 @@
         </div>
         <hr>
         <div class="row text-center font-secondary">
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h2>{{ num_users }}</h2>
                 <h3>felhasználók</h3>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h2>{{ num_teachers }}</h2>
                 <h3>tanárok</h3>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 <h2>{{ num_lessons.id }}</h2>
                 <h3>lebonyolított órák</h3>
             </div>
@@ -140,17 +143,17 @@
             <div class="col-12">
                 <h2>tanárok</h2>
                 <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2" data-aos="fade-up">
+                    <div class="teacher-card shadow-1 m-2">
                         <h5>teacher 1</h5>
                     </div>
                 </div>
                 <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2" data-aos="fade-up">
+                    <div class="teacher-card shadow-1 m-2">
                         <h5>teacher 1</h5>
                     </div>
                 </div>
                 <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2" data-aos="fade-up">
+                    <div class="teacher-card shadow-1 m-2">
                         <h5>teacher 1</h5>
                     </div>
                 </div>

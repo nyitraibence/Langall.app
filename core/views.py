@@ -23,8 +23,10 @@ def homepage(request):
     content = {
         'num_users' : user_count,
         'num_teachers' : teacher_count,
-        'num_lessons': lesson_count
+        'num_lessons': lesson_count,
     }
+    if request.user.is_authenticated:
+        content["notifications"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False).count()
     return render(request, 'homepage.html', content)
 
 def profile(request):
