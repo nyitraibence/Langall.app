@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from app_teachers.models import Lesson
+from .models import CustomUser
 # for email sending feature
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate
@@ -20,14 +21,18 @@ def homepage(request):
     user_count = get_user_model().objects.all().count()
     teacher_count = get_user_model().objects.filter(is_teacher='True').count()
     lesson_count = Lesson.objects.filter(is_verified=True).count()
-    print("lessons",lesson_count)
+    sample_teachers = CustomUser.objects.filter(is_teacher=True).order_by('-teacherprofile__form_fill_factor')[:3]
+    
     content = {
         'num_users' : user_count,
         'num_teachers' : teacher_count,
         'num_lessons': lesson_count,
+        'sample_teachers': sample_teachers
     }
     if request.user.is_authenticated:
-        content["notifications"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False).count()
+        content["new_replies"] = 1
+        content["new_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=False).count()
+        content["missed_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=True).count()
     return render(request, 'homepage.html', content)
 
 def profile(request):

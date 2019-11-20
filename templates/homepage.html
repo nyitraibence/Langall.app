@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Langall app{% endblock %}
+{% block extra_stylesheets %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">{% endblock %}
 
 {% block content %}
 
@@ -12,11 +14,11 @@
         <div class="row text-center">
             <div class="col-md-8 mx-auto">
                 {% if user.is_authenticated %}
-                <h3 class="welcome-type-1">Üdv {{ user.first_name }}!</h3>
+                <h3 class="welcome-type-1" data-aos="fade-down">Üdv {{ user.first_name }}!</h3>
                 <br>
                 <!-- <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a> -->
                 {% endif %}
-                <h1>Langall.app</h1>
+                <h1 data-aos="fade-in">Langall.app</h1>
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio architecto omnis et atque sint quasi,
                     vero eius minus excepturi, in, quae quaerat voluptatem ratione rem ducimus cupiditate impedit
@@ -27,10 +29,10 @@
                 <a class="btn btn-with-icon btn-teacher mt-2" href="{% url 'teacher_panel' %}">
                     <img src="{% static 'img/book_icon.png' %}" alt="facebook Belépés">
                     Tanári felületem
+                    {% if new_requests %}
+                    <span class="badge badge-sticker badge-danger">{{new_requests}}</span>
+                    {% endif %}
                 </a>
-                {% if notifications != 0 %}
-                <span class="badge badge-danger">{{notifications}}</span>
-                {% endif %}
                 {% else %}
                 <a class="btn btn--130 btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
                 <a class="btn btn--130 btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
@@ -38,48 +40,78 @@
             </div>
         </div>
     </div>
+    <div class="notification-corner mobile-hide" data-aos="fade-up">
+        {% if new_replies %}
+        <a href="{% url 'teacher_panel' %}"><span class="badge badge-palette-1">{{new_replies}}</span>{{new_replies}} új
+            válasz</a><br>
+        {% endif %}
+        {% if new_requests %}
+        <a href="{% url 'teacher_panel' %}"><span class="badge badge-palette-2">{{new_requests}}</span>{{new_requests}}
+            új felkérés</a><br>
+        {% endif %}
+        {% if missed_requests %}
+        <a href="{% url 'teacher_panel' %}"><span
+                class="badge badge-palette-4">{{missed_requests}}</span>{{missed_requests}} elmúlasztott
+            értesítés</a>
+        {% endif %}
+    </div>
 </section>
 <!-- HERO END -->
 
+<!-- GO FOR MORE BEGIN -->
+<div class="text-center" id="frontpage-more">
+    <a href="#frontpage-more">
+        <img src="{% static 'img/double_down_arrow_sec.svg' %}" alt="more on langall" width="35px">
+    </a>
+</div>
+<!-- GO FOR MORE END -->
+
+
 <!-- FEATURES BEGIN -->
-<section class="shadow-1">
+<section>
     <div class="container">
         <H1 class="mb-5">Mit nyújt a felület?</H1>
-        <div class="row text-center mb-5 justify-content-center">
-            <div class="col-sm-4 col-dm-3">
+        <div class="row text-center mb-5">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/teacher-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
                 <h5 class="font-secondary">Keress magadnak tanárokat</h5>
                 <p>
                     Válaszd ki melyik városban, milyen nyelven szeretnél tanulni, és találd meg a neked való tanárt!
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/timetable-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
                 <h5 class="font-secondary">Válassz szabadon időpontot</h5>
                 <p>
                     A tanároknak élő, folyamatosan frissített órarendje van, ahol láthatod mikor tudnak fogadni.
                     Ha találsz jó időpontot azonnal le is foglalhatod, nem kell sem várni sem telefonálgatni.
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/communication-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
                 <h5 class="font-secondary">Üzenj nekik</h5>
                 <p>
                     Ha bejelentkeztél láthatod a tanárok összes elérhetőségét, kérdezhetsz tőlük,
                     és felkeresheted őket telefonon vagy e-mailben.
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/rating-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
                 <h5 class="font-secondary">Értékeld őket</h5>
                 <p>
                     Segíthetitek egymás választását, és a tanárok munkáját értékelésekkel.
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/graduation-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
                 <h5 class="font-secondary">Nyelvvizsgázz</h5>
                 <p>
                     Ha úgyérzed felkészültél, de nemtudod hol nyelvvizsgázz, mi segítünk.
                 </p>
             </div>
-            <div class="col-sm-4 col-dm-3 mx-auto">
-                <h5 class="font-secondary">Vagy taníts!</h5>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/guru-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary">Vagy taníts te magad!</h5>
                 <p>
                     Eleget tudsz, hogy taníts másokat? Regisztrálj be és adj annyi órát amennyit szeretnél.
                 </p>
@@ -101,18 +133,31 @@
             </div>
         </div>
         <hr>
-        <div class="row text-center font-secondary">
-            <div class="col-sm-4">
+        <div class="row text-center font-secondary statistics">
+            <div class="col-4">
                 <h2>{{ num_users }}</h2>
                 <h3>felhasználók</h3>
             </div>
-            <div class="col-sm-4">
+            <div class="col-4">
                 <h2>{{ num_teachers }}</h2>
                 <h3>tanárok</h3>
             </div>
-            <div class="col-sm-4">
+            <div class="col-4">
                 <h2>{{ num_lessons }}</h2>
                 <h3>regisztrált tanórák</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sequi nihil porro obcaecati quaerat
+                temporibus facere expedita quo qui, aliquid fugiat accusantium quis eum at. Molestiae corporis cumque
+                eligendi non. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur tempora magnam ea quis
+                sequi? Recusandae reiciendis, quisquam quas impedit nihil, labore voluptates at est eos, et eius beatae
+                rerum iure!
+            </div>
+            <div class="col-md-4">
+                <canvas id="language-popularity-chart" width="400" height="400"></canvas>
             </div>
         </div>
         <hr>
@@ -142,22 +187,14 @@
         <div class="row">
             <div class="col-12">
                 <h2>tanárok</h2>
+                {% for teacher in sample_teachers %}
                 <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2">
-                        <h5>teacher 1</h5>
+                    <div class="teacher-card shadow-1 b-rad-7 m-2 p-3">
+                        <h5>{{teacher.last_name}} {{teacher.first_name}}</h5>
+                        <p>...</p>
                     </div>
                 </div>
-                <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2">
-                        <h5>teacher 1</h5>
-                    </div>
-                </div>
-                <div class="d-inline-block text-left">
-                    <div class="teacher-card shadow-1 m-2">
-                        <h5>teacher 1</h5>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
         <div class="text-center mt-4">
@@ -168,4 +205,5 @@
 {% endblock %}
 
 {% block extra_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 {% endblock %}
