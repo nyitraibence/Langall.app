@@ -6,16 +6,18 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mx-auto">
-                <hr>
-                {{user}}
-                <hr>
-                <h1>
-                    Új social account ! <br>
-                    Köszönjük, hogy regisztráltál!
+            <div class="col-md-8 mx-auto text-center">
+                <h3 class="welcome-type-1 mb-4">Üdv {{ user.first_name }}!</h3>
+                <h1 class="mb-5">
+                    🎉 Köszönjük, hogy regisztráltál!
                 </h1>
-                <h4>Közösségi fiókkal regisztráltál -</h4>
-                <p>Adj meg egy jelszót, hogy be tudj majd lépni facebook vagy LinkedIn nélkül is bármikor.</p>
+                <h4>Közösségi fiókkal léptél be hozzánk</h4>
+                <p class="mb-5">Ilyenkor ajánlott megadnod egy külön jelszót, hogy ne zárd ki magad, és facebook fiók
+                    nélkül is be
+                    tudj majd lépni
+                    bármikor. Ezt később is megteheted, ha most nem szeretnéd.</p>
+                <a class="btn btn--pill btn--130 btn-primary" href="{% url 'homepage' %}">Jelszó megadása</a>
+                <a class="btn btn--pill btn--130 btn-secondary" href="{% url 'homepage' %}">Főoldal</a>
             </div>
         </div>
     </div>

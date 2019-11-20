@@ -6,9 +6,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="giant-type-1 font-weight-bold">404 :(</h1>
-                <h3>A kért oldal sajnos nem elérhető!</h3>
-                <div class="icon-anim-container-1">
+                <h1 class="giant-type-1 font-weight-bold">404</h1>
+                <h3>A kért oldal sajnos nem található!</h3>
+                <p><a href="{% url 'homepage' %}" class="link-grey">Vissza a főoldalra</a></p>
+                <div class="icon-anim-container-1 mt-4">
                     <img src="{% static 'img/icon_graphic_green.svg' %}" alt="Langall 404" class="tounge--dropdown">
                     <img src="{% static 'img/fly.svg' %}" alt="Langall 404" class="fly--spinner">
                     <img src="{% static 'img/fly.svg' %}" alt="Langall 404" class="fly--spinner-2">

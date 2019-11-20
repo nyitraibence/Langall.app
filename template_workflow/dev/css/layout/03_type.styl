@@ -62,6 +62,7 @@
     font-style normal
 }
 
+// font colors---------------------------------------------------------------------------------------------
 .font-primary {
     color $primary
 }
@@ -70,20 +71,36 @@
     color $secondary
 }
 
-.font-tertiary {
-    color $tertiary
+.font-palette-1 {
+    color $palette-1
+}
+
+.font-palette-2 {
+    color $palette2
+}
+
+.font-palette-3 {
+    color $palette-3
+}
+
+.font-palette-4 {
+    color $spalette-4
+}
+
+.font-black {
+    color $black
 }
 
 .font-grey {
     color $grey
 }
 
-.font-ok {
-    color $palette-1
-}
-
 .font-light-grey {
     color $light-grey
+}
+
+.font-white {
+    color $white
 }
 
 .font-teacher {
@@ -103,5 +120,21 @@
 
     @media (max-width: 575px) {
         font-size 45px
+    }
+}
+
+.link-secondary {
+    color $secondary
+
+    &:hover {
+        color $secondary
+    }
+}
+
+.link-grey {
+    color $grey
+
+    &:hover {
+        color $grey
     }
 }

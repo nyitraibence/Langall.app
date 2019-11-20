@@ -6,15 +6,16 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col login-block">
+            <div class="col-sm-8 col-md-4 mx-auto text-center">
                 <h2>Bejelentkezés</h2>
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Belépés</button>
                 </form>
-                <p class="line-link">Még nincs fiókod? <a href="{% url 'register' %}">regisztrálj!</a></p>
-                <p class="line-link">Elfelejtetted a jelszavad? <a href="{% url 'password_reset' %}">igényelj újat</a>
+                <p>Még nincs fiókod? <a href="{% url 'register' %}" class="link-secondary">regisztrálj!</a></p>
+                <p>Elfelejtetted a jelszavad? <a href="{% url 'password_reset' %}" class="link-secondary">igényelj
+                        újat</a>
                 </p>
                 <div class="social-spacer-wr">
                     <span class="social-spacer">

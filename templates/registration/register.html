@@ -30,11 +30,12 @@
             </a>
             <div class="text-left mt-4">
                 <img src="{% static 'img/information.svg' %}" alt="információ" width="20px" class="mb-2">
-                <p class="info-field">
+                <p class="font-grey">
                     Közösségi oldalon keresztüli belépés során csak az általad jóváhagyott adatokat kérjük le,
-                    az <a href="#">Adatvédelmi nyilatkozatunk</a>-nak megfelelően.
+                    az <a href="#" class="link-grey"><u>Adatvédelmi nyilatkozatunk</u></a>-nak megfelelően.
                 </p>
-                <p class="line-link mt-4">Már van fiókod? <a href="{% url 'login' %}">tovább a belépéshez</a></p>
+                <p class="mt-4">Már van fiókod? <a href="{% url 'login' %}" class="link-secondary">tovább a
+                        belépéshez</a></p>
             </div>
         </div>
     </div>

@@ -120,4 +120,4 @@ def new_social(request):
 # ================= only created for testing hrad-to-reach urls' templates ===============================================
 def tester(request):
 
-    return render(request, 'email/test_email.html')
+    return render(request, 'registration/password_reset_form.html')

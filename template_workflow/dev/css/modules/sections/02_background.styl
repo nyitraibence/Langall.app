@@ -10,3 +10,14 @@
 .shadow-1 {
     box-shadow rgba(198, 198, 198, .7) 4px 4px 16px
 }
+
+// generating bg colors from all colors
+bgcolors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $lightgrey
+
+.bg {
+    for bgcolor in bgcolors {
+        &-{bgcolor[0]} {
+            background-color bgcolor[1]
+        }
+    }
+}

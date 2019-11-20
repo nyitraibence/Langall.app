@@ -9,21 +9,21 @@
             <h1>Profil</h1>
             <div>
                 <h5>{{ person.last_name }} {{ person.first_name }}</h5>
-                <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a>
+                <a class="btn btn-water-1" href="{% url 'logout' %}">Kijelentkezés</a>
             </div>
         </div>
 
         <hr>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 {% if has_fb_flag %}
-                <img src="{{profile_pic_url}}" alt="profile avatar" width="200px">
+                <div class="profile-pic-container">
+                    <img src="{{profile_pic_url}}" alt="fb profile picture" width="200px">
+                </div>
                 {% else %}
                 <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar" width="200px">
                 {% endif %}
-            </div>
-            <div class="col-md-4">
                 <p>{{ person.last_name }} {{ person.first_name }}</p>
                 <p>{{ person.email }}</p>
                 <p>{{ person.city }}</p>
@@ -32,50 +32,53 @@
                 <p>{{ person.interest_lang_2 }}</p>
                 <p>{{ person.interest_lang_3 }}</p>
                 {% if has_fb_flag %}
-                <a href="{{profile_url}}" class="btn btn-facebook" target="_blank">
-                    <img src="{% static 'img/facebook_white.svg' %}" alt="facebook link" height="20px">
+                <a href="{{profile_url}}" target="_blank">
+                    Facebook profilom >>>
                 </a>
                 {% endif %}
-                <br>
+                <br><br>
                 {% if user.is_teacher %}
                 <a href="{% url 'teacher_panel' %}">
-                    Tanári felületem
+                    Tanári felületem >>>
                 </a>
                 {% endif %}
 
+            </div>
+            <div class="col-md-8">
+                <h2>Adatok módosítása:</h2>
+                <h3>{{ message }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="row">
+                        <div class="col-5">
+                            {{ field.label_tag }}
+                        </div>
+                        <div class="col-7">
+                            {{ field }}
+                        </div>
+                        {% if field.help_text %}
+                        <small style="display: none">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div>
+                        <button type="submit" class="btn btn-primary d-block ml-auto">Mentés</button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <hr>
 
-        <h2>Adatok módosítása:</h2>
-        <h3>{{ message }}</h3>
-        <form method="post">
-            {% csrf_token %}
-            {% for field in form %}
-            <div class="row row--form">
-                <div class="col-sm-4 col-lg-2">
-                    {{ field.label_tag }}
-                </div>
-                <div class="col-sm-5 col-lg-3">
-                    {{ field }}
-                </div>
-                {% if field.help_text %}
-                <small style="display: none">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                <p style="color: red">{{ error }}</p>
-                {% endfor %}
-            </div>
-            {% endfor %}
-            <div>
-                <button type="submit" class="btn btn-primary d-block ml-auto">Mentés</button>
-            </div>
-        </form>
+
+
         {% if not user.is_teacher %}
+        <hr>
         <div class="row">
             <div class="col-12">
-                <hr>
                 <h2>Érdekel a tanítás?</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nihil, incidunt possimus facere ab quam blanditiis laborum,

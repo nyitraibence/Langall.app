@@ -27,30 +27,9 @@
 	}
 }
 
-input {
-	border 1px solid $light-grey
-	border-radius 5px
-	padding .5em
-	text-align center
-	width 100%
-}
-
-label {
-	color $grey
-	margin 0
-	width 100%
-	text-align left
-
-	@media (max-width: 575px) {
-		font-size 14px
-		line-height 18px
-	}
-}
-
 input:-webkit-autofill {
 	-webkit-animation-name autofill
 	-webkit-animation-fill-mode both
-	-webkit-text-fill-color $grey
 }
 
 /*
@@ -157,7 +136,7 @@ input[type=number] {
 
 /* checked mark aspect */
 [type='checkbox']:not(:checked) + label:after, [type='checkbox']:checked + label:after {
-	content '✔'
+	content 'â'
 	position absolute
 	top .2em
 	left .275em
@@ -207,12 +186,3 @@ label:hover:before {
 /**
  * END Custom checkbox
  */
-.row--form {
-	margin-top 15px
-	margin-bottom 15px
-}
-
-textarea {
-	resize none
-	border 1px solid $light-grey
-}

@@ -14,7 +14,7 @@
                 data: { lesson_id: accepted_lesson_id },
                 dataType: 'json',
                 success: function (json) {
-                    $('.js-new-lesson-options-' + accepted_lesson_id).html('<h5 class="font-ok">Elfogadva</h5>');
+                    $('.js-new-lesson-options-' + accepted_lesson_id).html('<h5 class="font-palette-1">Elfogadva</h5>');
                 },
 
                 // handle a non-successful response

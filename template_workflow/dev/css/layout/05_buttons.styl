@@ -1,7 +1,7 @@
 /**
  * Custom button styles
  */
-colors = 'primary' $primary, 'secondary' $secondary
+colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-1
 
 .btn {
 	display inline-block
@@ -127,17 +127,19 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	min-width 250px !important
 }
 
+.btn--pill {
+	font-size 14px
+	font-weight 500
+	border-radius 1.4em
+	padding .65em .75em
+}
+
 // BUTTON COLORS ---------------------------------------------
 .btn {
 	&:hover {
 		color $white
 		filter brightness(108%)
 	}
-}
-
-.btn-cold {
-	color $white
-	background $cold
 }
 
 .btn-with-icon {
@@ -178,11 +180,6 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	}
 }
 
-.btn-contact {
-	color $white
-	background $tertiary
-}
-
 .btn-teacher {
 	width 100%
 	max-width 270px
@@ -190,43 +187,19 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	background $teacher-color
 }
 
-.btn-grey {
-	color $white
-	background $grey
-}
+// generatng BADGES in all colors
+badge_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $light-grey
 
-.btn-ok {
-	color $white
-	background $palette-1
-}
+.badge {
+	for badge_color in badge_colors {
+		&-{badge_color[0]} {
+			color $white
+			background-color badge_color[1]
 
-// BADGES
-.badge-teacher {
-	color $white
-	background $palette-1
-}
-
-.badge-light-grey {
-	color $white
-	background $light-grey
-}
-
-.badge-warning {
-	color $white
-	background $warning
-}
-
-.badge-cold {
-	color $white
-	background $cold
-}
-
-.badge-problem {
-	color $white
-	background $palette-problem
-}
-
-.badge-deep {
-	color $white
-	background $palette-deep
+			&:hover {
+				color $white !important
+				background-color badge_color[1] !important
+			}
+		}
+	}
 }
