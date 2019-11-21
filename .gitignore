@@ -2,3 +2,5 @@ template_workflow/node_modules
 .env
 ~$docu.docx
 **/*.pyc
+core/__pycache__/forms.cpython-37.pyc
+core/__pycache__/urls.cpython-37.pyc
