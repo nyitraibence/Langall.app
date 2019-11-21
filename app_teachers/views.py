@@ -26,7 +26,7 @@ def start_teaching(request):
 
 def teacher_panel(request):
     top_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=True, is_over=False).order_by('start_time')[:3]
-    unverified_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False).order_by('created')
+    unverified_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False).order_by('-created')
     passed_3_appointments = Lesson.objects.filter(host_teacher=request.user.id, is_verified=True, is_over=True).order_by('-start_time')[:3]
     
     content = {
@@ -44,14 +44,32 @@ def teachers(request):
 
 
 
+
+
+
+
 def single_teacher(request, pk):
     the_teacher = CustomUser.objects.get(id = pk)
-    ping_form = PingTeacherForm()
     content = {
-        'teacher' : the_teacher,
-        'form' : ping_form
+        'teacher' : the_teacher
     }
+
+    if request.method == "POST":
+        form = PingTeacherForm(request.POST)
+        if form.is_valid():
+            ping_message = form.save(commit=False)
+            ping_message.host_teacher = the_teacher
+            ping_message.student = request.user
+            ping_message.save()
+            return redirect('single_teacher', pk=the_teacher.pk)
+    else:
+        form = PingTeacherForm()
+    content['form'] = form
     return render(request, 'app_teachers/single_teacher.html', content)
+
+
+
+
 
 
 def single_lesson(request, pk):

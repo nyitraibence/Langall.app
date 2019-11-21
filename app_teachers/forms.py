@@ -1,5 +1,6 @@
 from django import forms
 from .models import TeacherProfile, Lesson
+from django.utils.translation import gettext_lazy as _
 
 class TeacherForm(forms.ModelForm):
     class Meta:
@@ -11,3 +12,7 @@ class PingTeacherForm(forms.ModelForm):
     class Meta:
         model = Lesson
         fields = ['language', 'note']
+        labels = {
+            'language': _('Milyen nyelven?'),
+            'note': _('Üzenet'),
+        }
