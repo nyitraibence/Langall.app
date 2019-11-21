@@ -1,6 +1,6 @@
 [![N|Solid](assets/img/icon_50.png)](http://localhost:8000/)
 # Langall app
-We make students meet. Find the perfect language teacher for you. Or sign up to teach others. Faster and simpler than ever. Langall.
+Django application for finding language teachers (Python 3.7)
 
 1. install requirements: `pip install -r requirements.txt`
 2. create `.env` file in root dir. as described in `.env.example` 
@@ -9,4 +9,4 @@ We make students meet. Find the perfect language teacher for you. Or sign up to 
 
 Version: 1.0
 
-For help, contact: nyitrai.done@gmail.com
+nyitrai.done@gmail.com
