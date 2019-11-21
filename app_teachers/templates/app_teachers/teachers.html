@@ -12,7 +12,8 @@
         <hr>
         <div class="row">
 
-            {% for teacher in teachers %} <div class=" col-md-4">
+            {% for teacher in teachers %}
+            <div class=" col-md-4">
                 <div class="teacher-card shadow-1">
                     <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
                     <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
