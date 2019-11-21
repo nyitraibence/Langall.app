@@ -1,122 +1,36 @@
-/**
- * Custom button styles
- */
-colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-1
+btn_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $light-grey
 
 .btn {
-	display inline-block
-	text-align center
-	white-space nowrap
-	vertical-align middle
-	user-select none
-	border 2px solid transparent
-	min-width 120px
-	padding .75em
-	font-size 1rem
-	line-height 1
-	border-radius 3px
-	transition color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
-
-	&:hover, &:focus {
-		text-decoration none
-	}
-
-	&:focus, &.focus {
-		outline 0
-		box-shadow none
-	}
-
-	&:disabled, &.disabled {
-		opacity .5
-		box-shadow none
-		pointer-events none
-	}
-
-	&:not([disabled]):not(.disabled) {
-		cursor pointer
-	}
-
-	// FOREACH COLORS AND GENERATE BUTTONS AND OUTLINE BUTTONS
-	for color in colors {
-		&-{color[0]} {
+	for btn_color in btn_colors {
+		&-{btn_color[0]} {
 			color $white
-			background-color color[1]
-			border-color color[1]
+			border-color btn_color[1]
+			background-color btn_color[1]
 
 			&:hover {
-				color $white
-				background-color color[1]
-				border-color color[1]
-			}
-
-			&:focus, &.focus {
-				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
-			}
-
-			&.disabled, &:disabled {
-				color $white
-				background-color color[1]
-				border-color color[1]
-			}
-
-			&:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
-				color $white
-				background-color color[1]
-				border-color color[1]
-			}
-
-			&:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus {
-				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
-			}
-		}
-
-		&-{color[0]}-outline {
-			color color[1]
-			background-color $white
-			border-color color[1]
-
-			&:hover {
-				color $white
-				background-color color[1]
-				border-color color[1]
-			}
-
-			&:focus, &.focus {
-				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
-			}
-
-			&.disabled, &:disabled {
-				color color[1]
-				background-color $white
-				border-color color[1]
-			}
-
-			&:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active, .show > &.dropdown-toggle {
-				color color[1]
-				background-color $white
-				border-color color[1]
-			}
-
-			&:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus, .show > &.dropdown-toggle:focus {
-				box-shadow 0 0 0 .1rem rgba(0, 123, 255, .5)
+				color $white !important
+				border-color btn_color[1]
+				background-color btn_color[1] !important
 			}
 		}
 	}
-
-	&-block {
-		display block
-		width 100%
-	}
 }
 
-// Specificity overrides
-input[type='submit'], input[type='reset'], input[type='button'] {
-	&.btn-block {
-		width 100%
+badge_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $light-grey
+
+.badge {
+	for badge_color in badge_colors {
+		&-{badge_color[0]} {
+			color $white
+			background-color badge_color[1]
+
+			&:hover {
+				color $white !important
+				background-color badge_color[1] !important
+			}
+		}
 	}
 }
-
-// DEV ====================================================================================================
 
 // BUTTON SIZES ----------------------------------------------
 .btn--130 {
@@ -143,7 +57,7 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 }
 
 .btn-with-icon {
-	padding .75em
+	padding .6em
 	margin 10px 0
 	border-radius 4px
 	font-weight bold
@@ -185,21 +99,4 @@ input[type='submit'], input[type='reset'], input[type='button'] {
 	max-width 270px
 	color $white
 	background $teacher-color
-}
-
-// generatng BADGES in all colors
-badge_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $light-grey
-
-.badge {
-	for badge_color in badge_colors {
-		&-{badge_color[0]} {
-			color $white
-			background-color badge_color[1]
-
-			&:hover {
-				color $white !important
-				background-color badge_color[1] !important
-			}
-		}
-	}
 }

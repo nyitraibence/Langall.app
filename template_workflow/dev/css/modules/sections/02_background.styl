@@ -17,7 +17,7 @@ bgcolors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, '
 .bg {
     for bgcolor in bgcolors {
         &-{bgcolor[0]} {
-            background-color bgcolor[1]
+            background-color bgcolor[1] !important
         }
     }
 }

@@ -22,7 +22,7 @@
                     <img src="{{profile_pic_url}}" alt="fb profile picture" width="200px">
                 </div>
                 {% else %}
-                <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar" width="200px">
+                <img src="{% static 'img/icon_dis_500.png' %}" alt="profile avatar" width="200px">
                 {% endif %}
                 <p>{{ person.last_name }} {{ person.first_name }}</p>
                 <p>{{ person.email }}</p>
@@ -44,8 +44,9 @@
                 {% endif %}
 
             </div>
+
             <div class="col-md-8">
-                <h2>Adatok módosítása:</h2>
+                <h2 class="lead">Adatok módosítása:</h2>
                 <h3>{{ message }}</h3>
                 <form method="post">
                     {% csrf_token %}
@@ -71,9 +72,6 @@
                 </form>
             </div>
         </div>
-
-
-
 
         {% if not user.is_teacher %}
         <hr>

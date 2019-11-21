@@ -63,44 +63,14 @@
 }
 
 // font colors---------------------------------------------------------------------------------------------
-.font-primary {
-    color $primary
-}
+font_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-1, 'palette-2' $palette-2, 'palette-3' $palette-3, 'palette-4' $palette-4, 'water-1' $water-1, 'water-2' $water-2, 'black' $black, 'grey' $grey, 'light-grey' $light-grey, 'white' $white
 
-.font-secondary {
-    color $secondary
-}
-
-.font-palette-1 {
-    color $palette-1
-}
-
-.font-palette-2 {
-    color $palette2
-}
-
-.font-palette-3 {
-    color $palette-3
-}
-
-.font-palette-4 {
-    color $spalette-4
-}
-
-.font-black {
-    color $black
-}
-
-.font-grey {
-    color $grey
-}
-
-.font-light-grey {
-    color $light-grey
-}
-
-.font-white {
-    color $white
+.font {
+    for font_color in font_colors {
+        &-{font_color[0]} {
+            color font_color[1]
+        }
+    }
 }
 
 .font-teacher {
