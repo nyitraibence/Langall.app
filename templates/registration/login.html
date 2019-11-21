@@ -3,32 +3,35 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<section>
-    <div class="container">
+<section class="auth-section">
+    <div class="container text-center">
+        <h1 class="font-white mb-4">Langall.app</h1>
         <div class="row">
-            <div class="col-sm-8 col-md-4 mx-auto text-center">
-                <h2>Bejelentkezés</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Belépés</button>
-                </form>
-                <p>Még nincs fiókod? <a href="{% url 'register' %}" class="link-secondary">regisztrálj!</a></p>
-                <p>Elfelejtetted a jelszavad? <a href="{% url 'password_reset' %}" class="link-secondary">igényelj
-                        újat</a>
-                </p>
-                <div class="social-spacer-wr">
-                    <span class="social-spacer">
-                        vagy
-                    </span>
-                </div>
-                <a class="btn-with-icon btn-facebook" href="{% url 'social:begin' 'facebook' %}">
-                    <img src="{% static 'img/facebook_white.svg' %}" alt="facebook Belépés">
-                    folytatás facebook-al
-                </a>
-                <div class="btn-with-icon btn-linkedin btn-disabled">
-                    <img src="{% static 'img/linkedin.svg' %}" alt="linkedin Belépés">
-                    folytatás LinkedIn-nel
+            <div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
+                <div class="auth-card">
+                    <h2>Bejelentkezés</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn--130 btn-primary mb-3">Belépés</button>
+                    </form>
+                    <p>Még nincs fiókod? <a href="{% url 'register' %}" class="link-secondary">regisztrálj!</a></p>
+                    <p>Elfelejtetted a jelszavad? <a href="{% url 'password_reset' %}" class="link-secondary">igényelj
+                            újat</a>
+                    </p>
+                    <div class="social-spacer-wr">
+                        <span class="social-spacer">
+                            vagy
+                        </span>
+                    </div>
+                    <a class="btn-with-icon btn-facebook" href="{% url 'social:begin' 'facebook' %}">
+                        <img src="{% static 'img/facebook_white.svg' %}" alt="facebook Belépés">
+                        folytatás facebook-al
+                    </a>
+                    <div class="btn-with-icon btn-linkedin btn-disabled">
+                        <img src="{% static 'img/linkedin.svg' %}" alt="linkedin Belépés">
+                        folytatás LinkedIn-nel
+                    </div>
                 </div>
             </div>
         </div>

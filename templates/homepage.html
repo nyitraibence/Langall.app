@@ -7,9 +7,9 @@
 {% block content %}
 
 <!-- HERO BEGIN -->
-<section class="hero" id="hero-1">
+<section class="hero jarallax" id="hero-1">
     <!-- add id="hero-1" and jarallax class for bg -->
-    <!-- <span class="bg-fade-1"></span> -->
+    <span class="bg-fade-black"></span>
     <div class="container">
         <div class="row text-center">
             <div class="col-md-8 mx-auto">
@@ -26,7 +26,7 @@
                     aliquam suscipit.
                 </p>
                 {% if user.is_teacher %}
-                <a class="btn btn-with-icon btn-teacher mt-2" href="{% url 'teacher_panel' %}">
+                <a class="btn btn-with-icon btn-teacher-secondary mt-2" href="{% url 'teacher_panel' %}">
                     <img src="{% static 'img/book_icon.png' %}" alt="facebook Belépés">
                     Tanári felületem
                     {% if new_requests %}
@@ -40,21 +40,23 @@
             </div>
         </div>
     </div>
+    {% if user.is_authenticated %}
     <div class="notification-corner mobile-hide" data-aos="fade-up">
-        {% if new_replies %}
-        <a href="{% url 'teacher_panel' %}"><span class="badge badge-palette-1">{{new_replies}}</span>{{new_replies}} új
-            válasz</a><br>
-        {% endif %}
-        {% if new_requests %}
-        <a href="{% url 'teacher_panel' %}"><span class="badge badge-palette-2">{{new_requests}}</span>{{new_requests}}
-            új felkérés</a><br>
-        {% endif %}
-        {% if missed_requests %}
+
         <a href="{% url 'teacher_panel' %}"><span
-                class="badge badge-palette-4">{{missed_requests}}</span>{{missed_requests}} elmúlasztott
-            értesítés</a>
-        {% endif %}
+                class="badge badge-palette-1">{{new_replies}}</span>{% if new_replies %}{{new_replies}} új
+            válasz{% endif %}</a><br>
+
+
+        <a href="{% url 'teacher_panel' %}"><span
+                class="badge badge-palette-2">{{new_requests}}</span>{% if new_requests %}{{new_requests}}
+            új felkérés{% endif %}</a><br>
+        <a href="{% url 'teacher_panel' %}"><span
+                class="badge badge-palette-4">{{missed_requests}}</span>{% if missed_requests %}{{missed_requests}}
+            elmúlasztott
+            értesítés{% endif %}</a>
     </div>
+    {% endif %}
 </section>
 <!-- HERO END -->
 
@@ -64,18 +66,17 @@
 <!-- FEATURES BEGIN -->
 <section>
     <div class="container">
-        <H1 class="mb-5">Mit nyújt a felület?</H1>
         <div class="row text-center mb-5">
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/teacher-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Keress magadnak tanárokat</h5>
+                <h5 class="font-secondary font-montserrat">Keress magadnak tanárokat</h5>
                 <p>
                     Válaszd ki melyik városban, milyen nyelven szeretnél tanulni, és találd meg a neked való tanárt!
                 </p>
             </div>
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/timetable-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Válassz szabadon időpontot</h5>
+                <h5 class="font-secondary font-montserrat">Válassz szabadon időpontot</h5>
                 <p>
                     A tanároknak élő, folyamatosan frissített órarendje van, ahol láthatod mikor tudnak fogadni.
                     Ha találsz jó időpontot azonnal le is foglalhatod, nem kell sem várni sem telefonálgatni.
@@ -83,7 +84,7 @@
             </div>
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/communication-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Üzenj nekik</h5>
+                <h5 class="font-secondary font-montserrat">Üzenj nekik</h5>
                 <p>
                     Ha bejelentkeztél láthatod a tanárok összes elérhetőségét, kérdezhetsz tőlük,
                     és felkeresheted őket telefonon vagy e-mailben.
@@ -91,29 +92,35 @@
             </div>
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/rating-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Értékeld őket</h5>
+                <h5 class="font-secondary font-montserrat">Értékeld őket</h5>
                 <p>
                     Segíthetitek egymás választását, és a tanárok munkáját értékelésekkel.
                 </p>
             </div>
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/graduation-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Nyelvvizsgázz</h5>
+                <h5 class="font-secondary font-montserrat">Nyelvvizsgázz</h5>
                 <p>
                     Ha úgyérzed felkészültél, de nemtudod hol nyelvvizsgázz, mi segítünk.
                 </p>
             </div>
             <div class="col-sm-6 col-md-4">
                 <img src="{% static 'img/guru-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
-                <h5 class="font-secondary">Vagy taníts te magad!</h5>
+                <h5 class="font-secondary font-montserrat">Vagy taníts te magad!</h5>
                 <p>
                     Eleget tudsz, hogy taníts másokat? Regisztrálj be és adj annyi órát amennyit szeretnél.
                 </p>
             </div>
         </div>
-        <hr>
+    </div>
+</section>
+
+
+<section class="full-bleed-img">
+    <div class="container text-center font-white">
         <div class="row">
             <div class="col-12">
+                <h1 class="mb-5 font-montserrat">Kezdj bele a nyelvtanulásba</h1>
                 <p>Célunk, hogy lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Optio vero sequi explicabo perspiciatis quos earum magnam?
                     Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
@@ -126,8 +133,15 @@
                 </p>
             </div>
         </div>
-        <hr>
-        <div class="row text-center font-secondary statistics">
+    </div>
+</section>
+
+
+
+
+<section>
+    <div class="container">
+        <div class="row text-center font-secondary statistics font-montserrat">
             <div class="col-4">
                 <h2>{{ num_users }}</h2>
                 <h3>felhasználók</h3>
@@ -141,16 +155,24 @@
                 <h3>regisztrált tanórák</h3>
             </div>
         </div>
-        <hr>
+    </div>
+</section>
+<hr>
+<section>
+    <div class="container">
         <div class="row">
             <div class="col-md-8">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sequi nihil porro obcaecati quaerat
-                temporibus facere expedita quo qui, aliquid fugiat accusantium quis eum at. Molestiae corporis cumque
-                eligendi non. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur tempora magnam ea quis
-                sequi? Recusandae reiciendis, quisquam quas impedit nihil, labore voluptates at est eos, et eius beatae
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo sequi nihil porro obcaecati
+                quaerat
+                temporibus facere expedita quo qui, aliquid fugiat accusantium quis eum at. Molestiae corporis
+                cumque
+                eligendi non. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur tempora magnam
+                ea quis
+                sequi? Recusandae reiciendis, quisquam quas impedit nihil, labore voluptates at est eos, et eius
+                beatae
                 rerum iure!
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mt-5">
                 <canvas id="language-popularity-chart" width="400" height="400"></canvas>
             </div>
         </div>
@@ -197,6 +219,11 @@
     </div>
 </section>
 {% endblock %}
+
+
+
+
+
 
 {% block extra_scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
