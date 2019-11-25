@@ -8,6 +8,14 @@
 	}
 
 	.navbar-brand {
+		img {
+			filter drop-shadow(2px 4px 4px #cdcdcd)
+			transition filter .4s
+
+			&:hover {
+				filter drop-shadow(2px 4px 4px #aaaaaa)
+			}
+		}
 	}
 
 	.container {
@@ -31,5 +39,60 @@
 				}
 			}
 		}
+	}
+}
+
+.welcome-navbar {
+	text-align right
+	position absolute
+	top 0
+	left 0
+	right 0
+	z-index 150
+	background rgba(255, 255, 255, .05)
+	color $white
+	padding 10px 0
+	transition background .2s
+
+	&:hover {
+		background rgba(255, 255, 255, .1)
+	}
+
+	@media (max-width: 576px) {
+		border-radius 40px
+		margin 10px
+		text-align center
+	}
+}
+
+.welcome-auth {
+	text-align center
+	display inline-block
+	color $white
+	font-size 16px
+	padding .6em
+	min-width 130px
+	border-radius 5px
+	transition color .3s, border-color .3s
+
+	@media (max-width: 576px) {
+		color $white
+	}
+
+	&-bordered {
+		color $white
+		border 1px solid $white
+
+		@media (max-width: 576px) {
+			border-radius 30px
+		}
+
+		&:hover {
+		}
+	}
+
+	&:hover {
+		color $white
+		text-decoration none
 	}
 }

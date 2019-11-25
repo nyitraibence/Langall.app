@@ -1,0 +1,48 @@
+/*
+ * AUTOCOMPLETE BACKGROUND AND COLOR CHANGE
+ */
+@keyframes autofill {
+    to {
+        color $grey
+        background $white
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name autofill
+    -webkit-animation-fill-mode both
+}
+
+form {
+    margin 20px 0
+    text-align left
+
+    span {
+        color $grey
+    }
+}
+
+input {
+    display block
+    width 100%
+    background $white
+    border 1px solid $light-grey
+    border-radius 20px
+    padding .65em 2em
+    color $grey
+}
+
+label {
+    color $grey
+    margin 0
+}
+
+textarea {
+    padding 20px
+    display block
+    width 100%
+    max-height 150px
+    border 1px solid $light-grey
+    border-radius 20px
+    resize none
+}

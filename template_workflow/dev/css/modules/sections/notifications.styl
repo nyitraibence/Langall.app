@@ -8,16 +8,23 @@
 
     a {
         color $white
+        opacity .85
+        transition opacity .3s ease
 
         &:hover {
             color $white
+            opacity 1
+            text-decoration none
         }
     }
 
     .badge {
+        width 13px
+        height 13px
         margin-right 12px
         border-radius 50%
         color transparent
+        background-color $white
 
         &:hover {
             color transparent !important

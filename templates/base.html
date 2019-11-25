@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    {% block navigation %}
     <nav id="menu" class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand navbar-brand-home" href="{% url 'homepage' %}">
@@ -23,15 +24,22 @@
             </a>
             <button class="navbar-toggler hamburger hamburger--collapse" type="button" data-toggle="collapse"
                 data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Menu">
-                <span class="hamburger-box">
+                <!-- <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
-                </span>
+                </span> -->
+                <img src="{% static 'icons/menu_x.svg' %}" height="30">
             </button>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'homepage' %}">Főoldal</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'teachers' %}">Tanárok</a></li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="#">Kedvencek</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Rólunk</a></li>
+                    {% if user.is_authenticated %}
+                    {% if user.is_teacher %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'teacher_panel' %}">Tanári felületem</a></li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link nav-link-bordered" href="{% url 'login' %}">Login</a>
@@ -42,6 +50,7 @@
             </div>
         </div>
     </nav>
+    {% endblock %}
 
     <main>
         {% block content %} {% endblock %}

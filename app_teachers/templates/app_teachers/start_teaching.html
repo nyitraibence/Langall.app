@@ -15,9 +15,10 @@
             </div>
         </div>
 
+
+        {% if user.is_authenticated %}
         <div class="row">
             <div class="col-md-5">
-                {% if user.is_authenticated %}
                 <h5>Egészítsd ki a profilod a tanítás részleteivel, és meg is vagy!</h5>
                 <p>
                     <form method="post">
@@ -26,13 +27,17 @@
                         <button type="submit" class="btn btn-primary">Mehet</button>
                     </form>
                 </p>
-                {% else %}
-                <br><br>
-                <a class="btn btn--130 btn-primary float-right ml-2" href="{% url 'register' %}">Regisztráció</a>
-                <a class="btn btn--130 btn-secondary float-right" href="{% url 'login' %}">Belépés</a>
-                {% endif %}
             </div>
         </div>
+        {% else %}
+        <div class="row">
+            <div class="col-12 text-center">
+                <a class="btn btn--130 btn-secondary" href="{% url 'register' %}">Regisztráció</a>
+                <a class="btn btn--130 btn-primary ml-3" href="{% url 'login' %}">Belépés</a>
+            </div>
+        </div>
+        {% endif %}
+
 
     </div>
 </section>

@@ -21,8 +21,6 @@
                 <div class="profile-pic-container">
                     <img src="{{profile_pic_url}}" alt="fb profile picture" width="200px">
                 </div>
-                {% else %}
-                <img src="{% static 'img/male_teacher.png' %}" alt="profile avatar" width="200px">
                 {% endif %}
                 <p>{{ person.last_name }} {{ person.first_name }}</p>
                 <p>{{ person.email }}</p>
@@ -51,7 +49,7 @@
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-5">
                             {{ field.label_tag }}
                         </div>
@@ -67,7 +65,7 @@
                     </div>
                     {% endfor %}
                     <div>
-                        <button type="submit" class="btn btn-primary d-block ml-auto">Mentés</button>
+                        <button type="submit" class="btn btn--130 btn-primary d-block ml-auto mt-3">Mentés</button>
                     </div>
                 </form>
             </div>
@@ -83,7 +81,7 @@
                     molestiae optio eum impedit aspernatur quaerat quibusdam,
                     earum corporis recusandae odio minus labore cupiditate.
                 </p>
-                <a class="btn btn-primary" href="{% url 'start_teaching' %}">Tovább</a>
+                <a class="btn btn--130 btn-primary btn--pill" href="{% url 'start_teaching' %}">Tovább</a>
             </div>
         </div>
         {% endif %}

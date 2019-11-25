@@ -11,23 +11,27 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-6">
-                <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
-                <p>{{ass.extra_data.picture.data.url}}</p>
-                <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
-                    {{ teacher.teacherprofile.teach_lang_3 }}</h5>
-                <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
-                <p>5.0 <small>(14 értékelés)</small></p>
-                {% if user.is_authenticated %}
-                <p>📞 +36 30 3546993</p>
-                <p>📩 {{teacher.email}}</p>
-                {% else %}
-                <p>📞 +36...</p>
-                <p>📩 ...</p>
-                {% endif %}
-                <p>{{ teacher.teacherprofile.introduction }}</p>
+            <div class="col-md-6 col-lg-4">
+                <div class="teacher-card shadow-1">
+                    <div class="teacher-card-header mb-4">
+                        <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
+                        <h4 class="m-0 pl-3">{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                    </div>
+                    <p class="font-grey">{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}
+                    </p>
+                    <div class="teacher-card-content">
+                        <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                            {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                        <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                    </div>
+                    <p class="font-grey m-0">5.0 <small><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><br>(14 értékelés)</small></p>
+                    <p>&#x260e; +36 30 3546993</p>
+                    <p>📩 {{teacher.email}}</p>
+                    <p class="m-0">{{ teacher.teacherprofile.introduction }}</p>
+                </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-8">
                 <h2 class="shadow-1 b-rad-7 p-3">Órarend</h2>
             </div>
         </div>

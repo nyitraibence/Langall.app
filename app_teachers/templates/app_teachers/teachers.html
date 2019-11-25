@@ -4,47 +4,69 @@
 
 {% block content %}
 <section>
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2>Válassz tanárt magadnak!</h2>
-            <a href=" {% url 'homepage' %}">&#x21e0; vissza a főoldalra</a>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12">
+                {% if user.is_authenticated %}
+                <h3 class="welcome-type-1" data-aos="fade-down">Belépve, mint {{ user.first_name }}</h3>
+                <br>
+                <!-- <a class="btn btn-cold" href="{% url 'logout' %}">Kijelentkezés</a> -->
+                {% endif %}
+                <h1>Válassz tanárt magadnak!</h1>
+            </div>
         </div>
-        <hr>
+    </div>
+</section>
+<hr>
+<section>
+    <div class="container">
         <div class="row">
-
             {% for teacher in teachers %}
-            <div class=" col-md-4">
+            <div class=" col-md-6 col-lg-4">
                 <div class="teacher-card shadow-1">
-                    <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
-                    <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
-                    <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
-                    <p>{{ass.extra_data.picture.data.url}}</p>
-                    <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
-                        {{ teacher.teacherprofile.teach_lang_3 }}</h5>
-                    <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
-                    <p>5.0 <small>(14 értékelés)</small></p>
-                    {% if user.is_authenticated %}
-                    <p>&#x260e; +36 30 3546993</p>
-                    <p>📩 {{teacher.email}}</p>
-                    {% else %}
-                    <p>&#x260e; +36...</p>
-                    <p>📩 ...</p>
-                    {% endif %}
-                    <p>{{ teacher.teacherprofile.introduction }}</p>
-                    {% if user.is_authenticated %}
-                    <a class="btn btn--130 btn-primary" href="{% url 'single_teacher' teacher.id %}">felkeresés</a>
-                    {% else %}
-                    <hr>
-                    <p class="font-grey">
-                        minden leírást elolvashatsz róluk, de a kapcsolatot csak
-                        <a href="{% url 'login' %}">belépés</a>
-                        után veheted fel velük
+                    <div class="teacher-card-header mb-4">
+                        <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
+                        <h4 class="m-0 pl-3">{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                    </div>
+                    <p class="font-grey">{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}
                     </p>
-                    {% endif %}
+                    <div class="teacher-card-content">
+                        <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                            {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                        <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                    </div>
+                    <div class="teacher-card-footer">
+                        <button class="btn btn--130 btn-secondary btn--pill" type="button" data-toggle="collapse"
+                            data-target="#teacher-card-collapse-{{teacher.id}}" aria-expanded="false"
+                            aria-controls="teacher-card-collapse-{{teacher.id}}">
+                            Részletek
+                        </button>
+                        <p class="font-grey m-0">5.0 <small><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><br>(14 értékelés)</small></p>
+                    </div>
+                    <div class="collapse teacher-card-collapse" id="teacher-card-collapse-{{teacher.id}}">
+                        <div class="teacher-card-collapse-inner">
+                            <p>&#x260e; +36 30 3546993</p>
+                            <p>📩 {{teacher.email}}</p>
+                            <p class="m-0">{{ teacher.teacherprofile.introduction }}</p>
+                            {% if user.is_authenticated %}
+                            <div class="text-right">
+                                <a class="btn btn--130 btn-primary btn--pill mt-3"
+                                    href="{% url 'single_teacher' teacher.id %}">felkeresés</a>
+                            </div>
+                            {% else %}
+                            <hr>
+                            <p class="font-grey m-0">
+                                minden leírást elolvashatsz róluk, de üzenetet csak
+                                <a href="{% url 'login' %}">belépés</a>
+                                után írhatsz nekik
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </section>

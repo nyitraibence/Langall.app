@@ -1,0 +1,305 @@
+<!-- STATS BEGIN -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-5 text-center font-secondary statistics font-montserrat">
+                <div class="mt-0">
+                    <h2 class="mb-1">{{ num_users }}</h2>
+                    <h3>felhasználó</h3>
+                </div>
+                <div class="mt-5">
+                    <h2 class="mb-1">{{ num_teachers }}</h2>
+                    <h3>tanár</h3>
+                </div>
+                <div class="mt-5">
+                    <h2 class="mb-1">{{ num_lessons }}</h2>
+                    <h3>regisztrált tanóra</h3>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5">
+                <canvas id="language-city-spread-chart" width="400" height="400"></canvas>
+            </div>
+            <div class="col-md-4 mt-5">
+                <canvas id="language-popularity-chart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- STATS END -->
+
+
+
+<!-- BANNER BEGIN -->
+<section class="full-bleed-img">
+    <div class="container text-center font-white">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-5 font-montserrat giant-type-2">Kezdj bele a nyelvtanulásba</h1>
+                <p>Célunk, hogy lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Optio vero sequi explicabo perspiciatis quos earum magnam?
+                    Nulla qui adipisci aut numquam. Beatae enim nam vero ea ipsam?
+                    Magni, aliquid veniam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Esse ipsa dolore sequi ab est nobis fugit, nulla totam non quo saepe laborum id delectus,
+                    suscipit beatae voluptate odio et modi. Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Sequi rem facilis culpa quod, non nulla ex voluptate esse
+                    voluptatum alias cupiditate tempore asperiores, repellendus enim deleniti explicabo! Sint,
+                    soluta officia?
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BANNER BEGIN -->
+
+
+
+<!-- SAMPLE TEACHERS BEGIN -->
+<section>
+    <div class="container">
+        <h2 class="font-montserrat mb-3 mt-4">Tanárok</h2>
+        <div class="row">
+            {% for teacher in sample_teachers %}
+            <div class=" col-md-4">
+                <div class="teacher-card shadow-1">
+                    <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
+                    <h4>{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                    <p>{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}</p>
+                    <p>{{ass.extra_data.picture.data.url}}</p>
+                    <h5>{{ teacher.teacherprofile.teach_lang_1 }} {{ teacher.teacherprofile.teach_lang_2 }}
+                        {{ teacher.teacherprofile.teach_lang_3 }}</h5>
+                    <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
+                    <p>5.0 <small>(14 értékelés)</small></p>
+                    {% if user.is_authenticated %}
+                    <p>&#x260e; +36 30 3546993</p>
+                    <p>📩 {{teacher.email}}</p>
+                    {% else %}
+                    <p>&#x260e; +36...</p>
+                    <p>📩 ...</p>
+                    {% endif %}
+                    <p>{{ teacher.teacherprofile.introduction }}</p>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn--130 btn-secondary" href="{% url 'single_teacher' teacher.id %}">felkeresés</a>
+                    {% else %}
+                    <hr>
+                    <p class="font-grey">
+                        minden leírást elolvashatsz róluk, de a kapcsolatot csak
+                        <a href="{% url 'login' %}">belépés</a>
+                        után veheted fel velük
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a class="btn btn-primary" href="{% url 'teachers' %}">Összes megtekintése</a>
+        </div>
+    </div>
+</section>
+<!-- SAMPLE TEACHERS END -->
+
+
+
+<!-- FEATURES BEGIN -->
+<section>
+    <div class="container">
+        <h2 class="font-montserrat mb-3 mt-4">Mit nyújtunk?</h2>
+        <div class="row text-center mb-5">
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/teacher-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Keress magadnak tanárokat</h5>
+                <p>
+                    Válaszd ki melyik városban, milyen nyelven szeretnél tanulni, és találd meg a neked való tanárt!
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/timetable-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Válassz szabadon időpontot</h5>
+                <p>
+                    A tanároknak élő, folyamatosan frissített órarendje van, ahol láthatod mikor tudnak fogadni.
+                    Ha találsz jó időpontot azonnal le is foglalhatod, nem kell sem várni sem telefonálgatni.
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/communication-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Üzenj nekik</h5>
+                <p>
+                    Ha bejelentkeztél láthatod a tanárok összes elérhetőségét, kérdezhetsz tőlük,
+                    és felkeresheted őket telefonon vagy e-mailben.
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/rating-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Értékeld őket</h5>
+                <p>
+                    Segíthetitek egymás választását, és a tanárok munkáját értékelésekkel.
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/graduation-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Nyelvvizsgázz</h5>
+                <p>
+                    Ha úgyérzed felkészültél, de nemtudod hol nyelvvizsgázz, mi segítünk.
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="{% static 'img/guru-100.png' %}" alt="" height="80px" class="mb-3 mt-4">
+                <h5 class="font-secondary font-montserrat">Vagy taníts te magad!</h5>
+                <p>
+                    Eleget tudsz, hogy taníts másokat? Regisztrálj be és adj annyi órát amennyit szeretnél.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FEATURES END -->
+
+
+
+<!-- SCHOOLS BEGIN -->
+<section>
+    <div class="container">
+        <div class="row schools">
+            <div class="col-12 text-center mt-5 mb-4">
+                <h2>Iskolák</h2>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    Sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas cum qui!
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    Amet consectetur adipisicing elit.
+                    Ducimus, nam praesentium. Optio voluptatum provident harum
+                    nostrum ipsa repudiandae dolor vitae eveniet, earum a quam.
+                    Quae quidem amet voluptas.
+                </p>
+                <ul>
+                    <li>Nyelvvizsgázz egy kiemelt akkreditált helyen</li>
+                    <li>Szerezz kedvezményeket</li>
+                    <li>Olcsóbb re-vizsga</li>
+                    <li>Csoportos kedvezmények</li>
+                    <li>Taníts nálunk!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SCHOOLS END -->
+
+
+{% block extra_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+    var lang_chart_1 = document.getElementById('language-popularity-chart');
+    var myChart = new Chart(lang_chart_1, {
+        type: 'bar',
+        data: {
+            labels: ['Angol', 'Spanyol', 'Német', 'Olasz', 'Orosz', 'Kínai'],
+            datasets: [{
+                label: '# nyelvek iránti érdeklődés',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor:
+                    'rgba(255, 99, 132, 0.2)',
+                borderColor:
+                    'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            }
+        }
+    });
+
+    var lang_chart_1 = document.getElementById('language-city-spread-chart');
+    var myChart = new Chart(lang_chart_1, {
+        type: 'radar',
+        data: {
+            labels: ['Angol', 'Spanyol', 'Német', 'Olasz', 'Orosz', 'Kínai'],
+            datasets: [{
+                label: '# tanárok Budapesten',
+                data: [17, 9, 5, 12, 12, 2],
+                backgroundColor:
+                    'rgba(52, 152, 219, 0.2)',
+                borderColor:
+                    'rgba(52, 152, 219, 1)',
+                borderWidth: 1
+            },
+            {
+                label: '# tanárok Vidéken',
+                data: [12, 4, 11, 5, 12, 8],
+                backgroundColor:
+                    'rgba(255, 99, 132, 0.2)',
+                borderColor:
+                    'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{% endblock %}

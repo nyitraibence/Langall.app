@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Langall app{% endblock %}
+
+{% block navigation %}
+<section class="welcome-navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a class="welcome-auth welcome-auth-bordered" href="{% url 'login' %}">Login</a>
+                <a class="welcome-auth" href="{% url 'register' %}">Regisztráció</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- HERO BEGIN -->
+<section class="hero jarallax shadow-2" id="hero-1">
+    <span class="bg-fade-black"></span>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-8 mx-auto">
+                <h1 data-aos="fade-in">Langall.app</h1>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio architecto omnis et atque sint quasi,
+                    vero eius minus excepturi, in, quae quaerat voluptatem ratione rem ducimus cupiditate impedit
+                    aliquam suscipit. impedit
+                    aliquam suscipit.
+                </p>
+                <a class="btn btn--130 btn-secondary" href="{% url 'teachers' %}">Keress tanárt!</a>
+                <a class="btn btn--130 btn-primary" href="{% url 'start_teaching' %}">vagy tanítanál?</a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="notification-corner mobile-hide" data-aos="fade-up">
+        <a href="{% url 'teachers' %}">
+            <span class="badge">&nbsp;</span><br>
+            <span class="badge">&nbsp;</span><br>
+            <span class="badge">&nbsp;</span>
+        </a>
+    </div> -->
+</section>
+<!-- HERO END -->
+
+
+
+{% endblock %}

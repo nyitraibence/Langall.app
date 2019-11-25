@@ -17,21 +17,72 @@
             <div class="col-12">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Értesítések</a>
+                        <a class="nav-link active" href="#">Napló</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Órarend</a>
+                        <a class="nav-link" href="#">Tanár adataim</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tanár adatok</a>
+                        <a class="nav-link" href="#">Statisztikáim</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="row">
+
+            <div class="col-md-8">
+                <h2 class="mb-4">Órarend</h2>
+                ... órarend ide ...
+
+                <!-- PENDING START -->
+                {% if new_requests %}
+                <h2 class="mt-5">Elfogadásra váró felkérések</h2>
+                {% for new in new_requests %}
+                <div class="shadow-1 b-rad-7 mb-3">
+                    <div class="w-50 d-inline-block">
+                        <div class="p-3">
+                            <a class="badge badge-grey" href="{% url 'single_lesson' new.id %}">Részletek</a>
+                            {% if new.is_over %}
+                            <span class="badge badge-palette-3">Elmúlasztott</span>
+                            {% else %}
+                            <span class="badge badge-palette-2">Új!</span>
+                            {% endif %}
+                            {% if new.note %}
+                            <span class="badge badge-water-2" data-toggle="tooltip" data-placement="bottom"
+                                title="{{new.note}}">Note</span>
+                            {% endif %}
+                            {% if new.location %}
+                            <span class="badge badge-water-1" data-toggle="tooltip" data-placement="bottom"
+                                title="{{new.location}}">helyszín</span>
+                            {% endif %}
+                            <h5>{{ new.student.last_name }} {{ new.student.first_name }}, </h5>
+                            <strong>{{ new.language }}</strong><br>
+                            <p class="font-grey"><small><strong>{{ new.start_time|date:"l" }} - </strong>
+                                    {{ new.start_time|date:'Y, M, j' }}</small></p>
+                        </div>
+                    </div>
+                    <div class="d-inline-block js-new-lesson-options-{{ new.id }}">
+                        {% if new.is_over %}
+                        <button class="btn btn--130 btn-primary m-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
+                            data-ajax-url="{% url 'reject_lesson' %}">Már lejárt</button>
+                        {% else %}
+                        <button class="btn btn--130 btn-palette-3 m-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
+                            data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
+                        <button class="btn btn--130 btn-palette-1 m-2 js-pending-lesson-ok" data-l-id="{{ new.id }}"
+                            data-ajax-url="{% url 'accept_lesson' %}">Elfogadás</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-center">
+                    <h2 class="mt-5 font-grey">Most nincs új felkérésed</h2>
+                    <a href="{% url 'teacher_panel' %}" data-aos="fade-in" data-aos-delay="1000">&#x21bb; frissítés</a>
+                </div>
+                {% endif %}
+                <!-- PENDING END -->
+            </div>
             <div class="col-md-4">
-
-
                 <!-- UPCOMING START -->
                 {% if top_3 %}
                 <h4 class="mb-4">Következő órák:</h4>
@@ -76,65 +127,6 @@
                 {% endfor %}
                 {% endif %}
                 <!-- PASSED END -->
-
-
-            </div>
-            <div class="col-md-8">
-                <h2 class="mb-4">Órarend</h2>
-                <div class="row">
-                    <div class="col-12 p-4">
-                        ... órarend ide ...
-                    </div>
-                </div>
-
-                <!-- PENDING START -->
-                {% if new_requests %}
-                <h2 class="mt-5">Elfogadásra váró felkérések</h2>
-                {% for new in new_requests %}
-                <div class="row shadow-1 b-rad-7 mb-3">
-                    <div class="col-sm-6">
-                        <div class="p-3">
-                            <a class="badge badge-grey" href="{% url 'single_lesson' new.id %}">Részletek</a>
-                            {% if new.is_over %}
-                            <span class="badge badge-palette-3">Elmúlasztott</span>
-                            {% else %}
-                            <span class="badge badge-palette-2">Új!</span>
-                            {% endif %}
-                            {% if new.note %}
-                            <span class="badge badge-water-2" data-toggle="tooltip" data-placement="bottom"
-                                title="{{new.note}}">Note</span>
-                            {% endif %}
-                            {% if new.location %}
-                            <span class="badge badge-water-1" data-toggle="tooltip" data-placement="bottom"
-                                title="{{new.location}}">helyszín</span>
-                            {% endif %}
-                            <h5>{{ new.student.last_name }} {{ new.student.first_name }}, </h5>
-                            <strong>{{ new.language }}</strong><br>
-                            <p class="font-grey"><small><strong>{{ new.start_time|date:"l" }} - </strong>
-                                    {{ new.start_time|date:'Y, M, j' }}</small></p>
-                        </div>
-                    </div>
-                    <div
-                        class="col-sm-6 d-flex justify-content-center align-items-center js-new-lesson-options-{{ new.id }}">
-                        {% if new.is_over %}
-                        <button class="btn btn--130 btn-primary mr-2 js-pending-lesson-not-ok" data-l-id="{{ new.id }}"
-                            data-ajax-url="{% url 'reject_lesson' %}">Már lejárt</button>
-                        {% else %}
-                        <button class="btn btn--130 btn-palette-3 mr-2 js-pending-lesson-not-ok"
-                            data-l-id="{{ new.id }}" data-ajax-url="{% url 'reject_lesson' %}">Visszautasítás</button>
-                        <button class="btn btn--130 btn-palette-1 js-pending-lesson-ok" data-l-id="{{ new.id }}"
-                            data-ajax-url="{% url 'accept_lesson' %}">Elfogadás</button>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endfor %}
-                {% else %}
-                <div class="text-center">
-                    <h2 class="mt-5 font-grey">Most nincs új felkérésed</h2>
-                    <a href="{% url 'teacher_panel' %}" data-aos="fade-in" data-aos-delay="1000">&#x21bb; frissítés</a>
-                </div>
-                {% endif %}
-                <!-- PENDING END -->
             </div>
         </div>
     </div>
