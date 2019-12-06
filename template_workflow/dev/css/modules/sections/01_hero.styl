@@ -27,8 +27,45 @@
     }
 }
 
+.hero-modern {
+    background-size cover
+    background-position center
+    min-height 50vh
+    position relative
+    display flex
+    align-items center
+    color $white
+    margin 30px
+    border-radius 20px
+    overflow hidden
+
+    @media (max-width: 575px) {
+        min-height calc(100vh - 96px)
+        margin 10px
+        padding-bottom 60px
+    }
+
+    h1 {
+        font-size 90px
+
+        @media (max-width: 575px) {
+            font-size 45px
+            margin-bottom 30px
+        }
+    }
+
+    h2 {
+        margin-bottom 40px
+        font-family 'Montserrat'
+    }
+
+    .btn {
+        margin 1px
+    }
+}
+
 #hero-1 {
-    background-image url('../img/hero-3.jpg')
+    background-image url('../img/jungle.jpg')
     opacity .95
 }
 

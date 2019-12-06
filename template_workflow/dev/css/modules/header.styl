@@ -1,6 +1,7 @@
 .navbar {
 	background-color $white
 	border-bottom 1px solid rgba(0, 0, 0, .1)
+	font-family 'montserrat'
 
 	.navbar-toggler {
 		.navbar-toggler-icon {
@@ -49,13 +50,16 @@
 	left 0
 	right 0
 	z-index 150
-	background rgba(255, 255, 255, .05)
+	background rgba(255, 255, 255, 0)
 	color $white
 	padding 10px 0
-	transition background .2s
 
-	&:hover {
-		background rgba(255, 255, 255, .1)
+	a {
+		transition background .2s
+
+		&:hover {
+			background rgba(255, 255, 255, .15)
+		}
 	}
 
 	@media (max-width: 576px) {

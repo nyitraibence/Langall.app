@@ -20,32 +20,32 @@ from .signals import new_user_activation
 
 
 
-# def homepage(request):
-#     user_count = get_user_model().objects.all().count()
-#     teacher_count = get_user_model().objects.filter(is_teacher='True').count()
-#     lesson_count = Lesson.objects.filter(is_verified=True).count()
-#     sample_teachers = CustomUser.objects.filter(is_teacher=True).order_by('-teacherprofile__form_fill_factor')[:3]
-    
-#     content = {
-#         'num_users' : user_count,
-#         'num_teachers' : teacher_count,
-#         'num_lessons': lesson_count,
-#         'sample_teachers': sample_teachers
-#     }
-#     if request.user.is_authenticated:
-#         content["new_replies"] = 1
-#         content["new_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=False).count()
-#         content["missed_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=True).count()
-#     return render(request, 'homepage.html', content)
-
-
-
-
 def homepage(request):
+    user_count = get_user_model().objects.all().count()
+    teacher_count = get_user_model().objects.filter(is_teacher='True').count()
+    lesson_count = Lesson.objects.filter(is_verified=True).count()
+    sample_teachers = CustomUser.objects.filter(is_teacher=True).order_by('-teacherprofile__form_fill_factor')[:6]
+    
+    content = {
+        'num_users' : user_count,
+        'num_teachers' : teacher_count,
+        'num_lessons': lesson_count,
+        'sample_teachers': sample_teachers
+    }
     if request.user.is_authenticated:
-            return redirect('teachers')
-    else:
-        return render(request, 'welcome.html')
+        content["new_replies"] = 1
+        content["new_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=False).count()
+        content["missed_requests"] = Lesson.objects.filter(host_teacher=request.user.id, is_verified=False, is_rejected=False, is_over=True).count()
+    return render(request, 'homepage.html', content)
+
+
+
+
+# def homepage(request):
+#     if request.user.is_authenticated:
+#         return redirect('teachers')
+#     else:
+#         return render(request, 'welcome.html')
 
 
 

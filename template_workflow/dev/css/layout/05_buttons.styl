@@ -12,8 +12,14 @@
 	border-color $grey
 }
 
-.btn-secondary.focus, .btn-secondary:focus {
+.btn-secondary.focus, .btn-secondary:focus, .btn-primary.focus, .btn-primary:focus {
 	box-shadow none
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+	color #fff
+	background-color $grey
+	border-color $grey
 }
 
 // bootstrap overrides
@@ -69,6 +75,8 @@ badge_colors = 'primary' $primary, 'secondary' $secondary, 'palette-1' $palette-
 
 // BUTTON COLORS ---------------------------------------------
 .btn {
+	border 0
+
 	&:hover, &:active {
 		color $white
 		filter brightness(108%)
