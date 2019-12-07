@@ -2,6 +2,7 @@ from django import forms
 from .models import TeacherProfile, Lesson
 from django.utils.translation import gettext_lazy as _
 
+
 class TeacherForm(forms.ModelForm):
     class Meta:
         model = TeacherProfile
