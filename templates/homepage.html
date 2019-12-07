@@ -117,6 +117,9 @@
                     <div class="teacher-card-header mb-4">
                         <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
                         <h4 class="m-0 pl-3">{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                        <button class="btn--fav">
+                            <img src="{% static 'icons/heart.png' %}" alt="langall tanár" width="25px">
+                        </button>
                     </div>
                     <p class="font-grey">{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}
                     </p>

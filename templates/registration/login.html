@@ -7,9 +7,10 @@
 
 {% block content %}
 <section class="auth-section">
-    <span class="bg-fade-black" style="z-index: -1;"></span>
     <div class="container text-center">
-        <h1 class="font-white mb-4">Langall.app</h1>
+        <a href="{% url 'homepage' %}">
+            <h1 class="font-white mb-4">Langall.app</h1>
+        </a>
         <div class="auth-card mx-auto">
             <h2>Bejelentkezés</h2>
             <form method="post">
