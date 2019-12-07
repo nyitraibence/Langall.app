@@ -18,4 +18,5 @@ class CustomUser(AbstractCUser):
     is_phone_verified = models.BooleanField(default=False)
     is_premium = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
+    favourites = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='reverse_favourites', blank=True)
 

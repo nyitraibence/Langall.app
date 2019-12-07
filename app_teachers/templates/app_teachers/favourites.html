@@ -4,10 +4,11 @@
 
 {% block content %}
 
+
 <section>
     <div class="container">
         <div class="row">
-            {% for teacher in teachers %}
+            {% for teacher in favourites %}
             <div class=" col-md-6 col-lg-4">
                 <div class="teacher-card shadow-1">
                     <div class="teacher-card-header mb-4">
@@ -22,7 +23,7 @@
                         <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
                     </div>
                     <div class="teacher-card-footer">
-                        <button class="btn btn--130 btn-secondary btn--pill" type="button" data-toggle="collapse"
+                        <button class="btn btn--130 btn-palette-2 btn--pill" type="button" data-toggle="collapse"
                             data-target="#teacher-card-collapse-{{teacher.id}}" aria-expanded="false"
                             aria-controls="teacher-card-collapse-{{teacher.id}}">
                             Részletek
@@ -37,8 +38,8 @@
                             <p class="m-0">{{ teacher.teacherprofile.introduction }}</p>
                             {% if user.is_authenticated %}
                             <div class="text-right">
-                                <a class="btn btn--130 btn-primary btn--pill mt-3"
-                                    href="{% url 'single_teacher' teacher.id %}">felkeresés</a>
+                                <a class="btn btn--130 btn--black-lined btn--pill mt-3"
+                                    href="{% url 'single_teacher' teacher.id %}">tovább ></a>
                             </div>
                             {% else %}
                             <hr>

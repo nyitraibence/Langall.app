@@ -75,3 +75,10 @@ def single_teacher(request, pk):
 def single_lesson(request, pk):
     the_lesson = Lesson.objects.get(id = pk)
     return render(request, 'app_teachers/single_lesson.html', {'lesson' : the_lesson})
+
+
+
+def favourites(request):
+    current_user = request.user
+    favourites = CustomUser.objects.filter(reverse_favourites=current_user)
+    return render(request, 'app_teachers/favourites.html', {'favourites' : favourites})
