@@ -7,9 +7,9 @@
 
 <section>
     <div class="container">
+        {% if favourites %}
+        <h1 class="mb-4" style="font-family: 'montserrat'; font-weight: 600;">Kedvenceid</h1>
         <div class="row">
-            {% if favourites %}
-
             {% for teacher in favourites %}
             <div class=" col-md-6 col-lg-4">
                 <div class="teacher-card shadow-1">
@@ -74,8 +74,8 @@
             <div class="col-12 text-center">
                 <h2 class="mt-5 font-grey">Még nincsenek kedvenceid</h2>
             </div>
-            {% endif %}
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

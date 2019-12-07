@@ -58,8 +58,10 @@
             console.log("teacher " + selected_teacher + " who was " + fav_status);
             if (fav_status == "not-fav-yet") {
                 $(this).find('img').css('opacity', 1);
+                $(this).data('fav-status', 'fav');
             } else {
                 $(this).find('img').css('opacity', .1);
+                $(this).data('fav-status', 'not-fav-yet');
             }
 
             $.ajax({
