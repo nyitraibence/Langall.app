@@ -13,4 +13,5 @@ urlpatterns = [
     # ones for teacher related ajax calls:
     path('ajax/accept_lesson/', views_ajax.accept_lesson, name="accept_lesson"),
     path('ajax/reject_lesson/', views_ajax.reject_lesson, name="reject_lesson"),
+    path('ajax/manage_fav/', views_ajax.manage_fav, name="manage_fav"),
 ]

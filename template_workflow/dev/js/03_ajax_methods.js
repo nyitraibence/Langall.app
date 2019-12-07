@@ -47,5 +47,38 @@
                 }
             });
         });
+
+
+        //-------------------------------------------
+
+        $(".js-fav").click(function () {
+            var selected_teacher = $(this).data('fav-teacher-id');
+            var fav_status = $(this).data('fav-status');
+            var ajax_url = $(this).data("ajax-url");
+            console.log("teacher " + selected_teacher + " who was " + fav_status);
+            if (fav_status == "not-fav-yet") {
+                $(this).find('img').css('opacity', 1);
+            } else {
+                $(this).find('img').css('opacity', .1);
+            }
+
+            $.ajax({
+                url: ajax_url,
+                type: "GET",
+                data: {
+                    teacher_to_manage: selected_teacher,
+                    manage_action: fav_status
+                },
+                dataType: 'json',
+                success: function (json) {
+                    console.log("succesfull ajax favourite management!");
+                },
+
+                // handle a non-successful response
+                error: function (xhr, errmsg, err) {
+                    console.log("Oops! fav ajax method failed.");
+                }
+            });
+        });
     });
 })(jQuery);

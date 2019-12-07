@@ -13,6 +13,19 @@
                     <div class="teacher-card-header mb-4">
                         <img src="{% static 'img/male_teacher.png' %}" alt="langall tanár" width="40px">
                         <h4 class="m-0 pl-3">{{ teacher.last_name }} {{ teacher.first_name }}</h4>
+                        {% if user in teacher.reverse_favourites.all %}
+                        <button class="btn--fav js-fav" data-fav-teacher-id="{{teacher.id}}" data-fav-status="fav"
+                            data-ajax-url="{% url 'manage_fav' %}">
+                            <img src="{% static 'icons/heart_filled.png' %}" alt="langall tanár" width="25px"
+                                style="opacity: 1;">
+                        </button>
+                        {% else %}
+                        <button class="btn--fav js-fav" data-fav-teacher-id="{{teacher.id}}"
+                            data-fav-status="not-fav-yet" data-ajax-url="{% url 'manage_fav' %}">
+                            <img src="{% static 'icons/heart_filled.png' %}" alt="langall tanár" width="25px"
+                                style="opacity: .1;">
+                        </button>
+                        {% endif %}
                     </div>
                     <p class="font-grey">{{ teacher.city }}{% if teacher.location %}, {{ teacher.location }}{% endif %}
                     </p>
