@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from core.models import CustomUser
-from .models import TeacherProfile, Lesson
+from .models import TeacherProfile, Lesson, TimeCell
 from social_django.models import UserSocialAuth
 from .forms import TeacherForm, PingTeacherForm
 
@@ -34,6 +34,11 @@ def teacher_panel(request):
         'new_requests': unverified_appointments,
         'past_3': passed_3_appointments
     }
+
+    content["days"]=["H","K","Sze","Cs","P","Szo","V"]
+    content["hours"] =[8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
+    content["teacher_time_cells"] = request.user.time_cell.all()
+
     return render(request, 'app_teachers/teacher_panel.html', content)
 
 
@@ -53,6 +58,10 @@ def single_teacher(request, pk):
     content = {
         'teacher' : the_teacher
     }
+
+    content["days"]=["H","K","Sze","Cs","P","Szo","V"]
+    content["hours"] =[8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
+    content["teacher_time_cells"] = the_teacher.time_cell.all()
 
     if request.method == "POST":
         form = PingTeacherForm(request.POST)

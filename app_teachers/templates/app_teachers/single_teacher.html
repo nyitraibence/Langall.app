@@ -25,14 +25,57 @@
                         <h5>{{ teacher.teacherprofile.base_price }} Ft/óra</h5>
                     </div>
                     <p class="font-grey m-0">5.0 <small><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><br>(14 értékelés)</small></p>
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><br>(14
+                            értékelés)</small></p>
                     <p>&#x260e; +36 30 3546993</p>
                     <p>📩 {{teacher.email}}</p>
                     <p class="m-0">{{ teacher.teacherprofile.introduction }}</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-8">
-                <h2 class="shadow-1 b-rad-7 p-3">Órarend</h2>
+
+                <!-- TIMETABLE STARTS -->
+                <table class="teacher-timetable">
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        {% for day in days %}
+                        <td class="day-names">
+                            {{ day }}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% for hour in hours %}
+                    <tr>
+                        <td>
+                            <small>{{ hour }}:00</small>
+                        </td>
+                        {% for day in days %}
+
+                        <td class="time-cell">
+                            {% for cell in teacher_time_cells %}
+                            {% if cell.day == day %}
+                            {% if cell.s_time.hour == hour %}
+                            {% if cell.status == 'available' %}
+                            <div class="available-cell bg-palette-1" data-toggle="tooltip" data-placement="bottom"
+                                title="elérhető">&nbsp;</div>
+                            {% else %}
+                            <div class="available-cell bg-palette-2" data-toggle="tooltip" data-placement="bottom"
+                                title="kétséges">&nbsp;</div>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                <!-- TIMETABLE ENDS -->
+
+
+                </h2>
             </div>
         </div>
         <div class="row mt-5">
@@ -43,8 +86,8 @@
                     email-ben, és értesítünk ha reagált!
                 </p>
                 <p>
-                    <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">
+                    <a class="font-black" data-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
                         &#x27a4; &#x27a4; &#x27a4;
                     </a>
                 </p>
@@ -60,7 +103,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h2>Pingeld meg a tanárod!</h2>
+                <h2>Üzenj neki!</h2>
                 <p>Küldj egy villám üzenetet a tanárnak hogy jó e neki az óra. Jelölj ki egy órarendi cellát ami
                     megfelelne, és kattints a Ping-re. Küldhetsz üzenetet is. Egyből értesítést kap róla, és tud
                     reagálni rá. Ha jóváhagyja,

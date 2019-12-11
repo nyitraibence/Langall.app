@@ -20,7 +20,7 @@
                         <a class="nav-link active" href="#">Napló</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tanár adataim</a>
+                        <a class="nav-link" href="#">Tanár adatok szerkesztése</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Statisztikáim</a>
@@ -32,7 +32,45 @@
 
             <div class="col-md-8">
                 <h2 class="mb-4">Órarend</h2>
-                ... órarend ide ...
+                <!-- TIMETABLE STARTS -->
+                <table class="teacher-timetable">
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        {% for day in days %}
+                        <td class="day-names">
+                            {{ day }}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% for hour in hours %}
+                    <tr>
+                        <td>
+                            <small>{{ hour }}:00</small>
+                        </td>
+                        {% for day in days %}
+
+                        <td class="time-cell">
+                            {% for cell in teacher_time_cells %}
+                            {% if cell.day == day %}
+                            {% if cell.s_time.hour == hour %}
+                            {% if cell.status == 'available' %}
+                            <div class="available-cell bg-palette-1" data-toggle="tooltip" data-placement="bottom"
+                                title="elérhető">&nbsp;</div>
+                            {% else %}
+                            <div class="available-cell bg-palette-2" data-toggle="tooltip" data-placement="bottom"
+                                title="kétséges">&nbsp;</div>
+                            {% endif %}
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                <!-- TIMETABLE ENDS -->
 
                 <!-- PENDING START -->
                 {% if new_requests %}

@@ -1,11 +1,11 @@
 from django.contrib import admin
 from cuser.admin import UserAdmin
 from .models import CustomUser
-from app_teachers.admin import TeacherProfileInline
+from app_teachers.admin import TeacherProfileInline, TimeCellInline
 
 
 class CustomUserAdmin(admin.ModelAdmin):
-    inlines = [TeacherProfileInline]
+    inlines = [TeacherProfileInline, TimeCellInline]
 
     list_display = ['email', 'first_name',
                     'last_name', 'is_teacher', 'is_active', ]
