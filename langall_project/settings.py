@@ -100,9 +100,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    # Authentication backend for Linked-in logins (currently not in use)
     'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',        # OG for regular user authentication 
+      
+    # Authentication backend for Facebook logins
+    'social_core.backends.facebook.FacebookOAuth2', 
+
+    # Django's original authentication backend, for regular logins  
+    'django.contrib.auth.backends.ModelBackend',        
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -138,7 +143,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('FB_APP_SECRET')        # App Secret
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new_social/'
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']             # afor social_auth extradata
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']             # for social_auth extradata
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {      
     'fields': 'id, name, email, picture.type(large), link'
 }
